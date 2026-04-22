@@ -712,28 +712,28 @@
                     <img src="https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=400&h=250&fit=crop" alt="書籍">
                     <h4>暢銷書籍推薦</h4>
                     <p>各類熱門書籍，知識與娛樂兼具</p>
-                    <a href="#" class="ad-button" onclick="trackAd('book-1')">查看詳情</a>
+                    <a href="https://shoppingfun.co/3QW_R" target="_blank" class="ad-button">查看詳情</a>
                 </div>
                 
                 <div class="ad-card">
                     <img src="https://images.unsplash.com/photo-1516035069371-29a1b244cc32?w=400&h=250&fit=crop" alt="攝影">
                     <h4>攝影器材特價</h4>
                     <p>專業攝影設備，限時優惠中</p>
-                    <a href="#" class="ad-button" onclick="trackAd('camera-1')">查看詳情</a>
+                    <a href="https://dreamstore.info/3QW_X" target="_blank" class="ad-button">查看詳情</a>
                 </div>
                 
                 <div class="ad-card desktop-only">
                     <img src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=400&h=250&fit=crop" alt="健康">
                     <h4>健康生活用品</h4>
                     <p>提升生活品質的健康產品</p>
-                    <a href="#" class="ad-button" onclick="trackAd('health-1')">查看詳情</a>
+                    <a href="https://www1.gamepark.com.tw/3QW_Y" target="_blank" class="ad-button">查看詳情</a>
                 </div>
                 
                 <div class="ad-card desktop-only">
                     <img src="https://images.unsplash.com/photo-1512820790803-83ca734da794?w=400&h=250&fit=crop" alt="學習">
                     <h4>線上學習課程</h4>
                     <p>隨時隨地學習新技能</p>
-                    <a href="#" class="ad-button" onclick="trackAd('course-1')">查看詳情</a>
+                    <a href="https://igrape.net/3QW_a" target="_blank" class="ad-button">查看詳情</a>
                 </div>
                 
                 <!-- 手機專用廣告 -->
@@ -741,14 +741,14 @@
                     <img src="https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?w=400&h=250&fit=crop" alt="水晶">
                     <h4>開運水晶手鍊</h4>
                     <p>精選天然水晶，提升正能量</p>
-                    <a href="#" class="ad-button" onclick="trackAd('crystal-1')">查看詳情</a>
+                    <a href="https://shoppingfun.co/3QW_R" target="_blank" class="ad-button">查看詳情</a>
                 </div>
                 
                 <div class="ad-card mobile-only">
                     <img src="https://images.unsplash.com/photo-1589998059171-988d887df646?w=400&h=250&fit=crop" alt="工具">
                     <h4>命理排盤工具</h4>
                     <p>電腦排盤軟體，快速分析</p>
-                    <a href="#" class="ad-button" onclick="trackAd('tool-1')">查看詳情</a>
+                    <a href="https://dreamstore.info/3QW_X" target="_blank" class="ad-button">查看詳情</a>
                 </div>
             </div>
         </section>
@@ -981,37 +981,9 @@ const popupHTML = `
     </div>
 `;
 
-// 廣告資料
-const portalAds = [
-    {
-        id: 'portal-book-1',
-        title: '暢銷書籍推薦',
-        description: '各類熱門書籍，知識與娛樂兼具',
-        category: '書籍雜誌',
-        price: 'NT$ 450'
-    },
-    {
-        id: 'portal-camera-1',
-        title: '攝影器材特價',
-        description: '專業攝影設備，限時優惠中',
-        category: '電子產品',
-        price: 'NT$ 2,800'
-    },
-    {
-        id: 'portal-health-1',
-        title: '健康生活用品',
-        description: '提升生活品質的健康產品',
-        category: '健康生活',
-        price: 'NT$ 1,280'
-    },
-    {
-        id: 'portal-course-1',
-        title: '線上學習課程',
-        description: '隨時隨地學習新技能',
-        category: '教育學習',
-        price: 'NT$ 1,980'
-    }
-];
+// 廣告資料（從外部載入）
+// 廣告資料已分離至 ads/ads.js
+// 如需修改廣告，編輯 ads/ads.js 即可
 
 // 顯示廣告pop up
 function showPortalAd(adId) {
@@ -1041,6 +1013,10 @@ function closePortalPopupAd() {
 // 訪問廣告
 function visitPortalAd() {
     if (window.currentPortalAdId) {
+        const ad = portalAds.find(a => a.id === window.currentPortalAdId);
+        if (ad && ad.link) {
+            window.open(ad.link, '_blank');
+        }
         trackAd(window.currentPortalAdId);
     }
     closePortalPopupAd();
@@ -1108,10 +1084,12 @@ document.addEventListener('DOMContentLoaded', function() {
             font-size: 14px;
         `;
         testButton.onclick = function() {
-            showPortalAd('portal-book-1');
+            showPortalAd('portal-ad-1');
         };
         adSection.appendChild(testButton);
     }
 });</script>
+    <!-- 廣告系統（獨立載入，不影響主系統） -->
+    <script src="ads/ads.js"></script>
 </body>
 </html>

@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>天機閣 - 專業命理服務</title>
-    <meta name="description" content="專業命理服務：今日運勢查詢、紫微斗數、八字命理、姓名學分析。永久網址，立即開始賺取佣金。">
+    <meta name="description" content="專業命理服務：今日運勢查詢、紫微斗數、八字命理、姓名學分析。">
     <style>
         :root {
             --primary: #2d1b3d;
@@ -160,6 +160,8 @@
             padding: 30px;
             border-left: 5px solid var(--accent);
             transition: all 0.3s;
+            cursor: pointer;
+            position: relative;
         }
         
         .service-card:hover {
@@ -214,6 +216,8 @@
             text-decoration: none;
             font-weight: bold;
             transition: all 0.3s;
+            border: none;
+            cursor: pointer;
         }
         
         .service-button:hover {
@@ -297,19 +301,6 @@
             font-weight: bold;
         }
         
-        .ad-commission {
-            margin-bottom: 20px;
-        }
-        
-        .commission-badge {
-            background: rgba(255,107,107,0.2);
-            color: var(--accent);
-            padding: 6px 12px;
-            border-radius: 4px;
-            font-size: 12px;
-            font-weight: bold;
-        }
-        
         .ad-button {
             display: block;
             text-align: center;
@@ -328,25 +319,155 @@
             box-shadow: 0 5px 15px rgba(255,107,107,0.3);
         }
         
-        .ichannels-info {
-            background: rgba(255, 213, 102, 0.1);
-            border: 1px solid rgba(255, 213, 102, 0.3);
-            border-radius: 10px;
-            padding: 20px;
-            margin-top: 30px;
+        /* 跳出廣告樣式 */
+        .popup-ad {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0.9);
+            background: rgba(26, 26, 46, 0.95);
+            border: 2px solid #ff6b6b;
+            border-radius: 15px;
+            padding: 30px;
+            width: 90%;
+            max-width: 400px;
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+        }
+        
+        .popup-ad.active {
+            opacity: 1;
+            visibility: visible;
+            transform: translate(-50%, -50%) scale(1);
+        }
+        
+        .popup-ad h3 {
+            color: #ffd166;
+            margin-bottom: 15px;
             text-align: center;
         }
         
-        .ichannels-info h3 {
-            color: #ffd166;
+        .popup-ad p {
+            color: #aaa;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
+        .popup-ad .ad-content {
+            background: rgba(255,255,255,0.05);
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .popup-ad .close-btn {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: none;
+            border: none;
+            color: #aaa;
+            font-size: 24px;
+            cursor: pointer;
+        }
+        
+        .popup-ad .close-btn:hover {
+            color: #ff6b6b;
+        }
+        
+        .popup-ad .popup-button {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            background: linear-gradient(90deg, #ff6b6b, #ff8e53);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .popup-ad .popup-button:hover {
+            background: linear-gradient(90deg, #ff8e53, #ff6b6b);
+            transform: translateY(-2px);
+        }
+        
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.7);
+            z-index: 999;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s;
+        }
+        
+        .overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        /* 小方塊廣告 */
+        .mini-ad {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: rgba(26, 26, 46, 0.9);
+            border: 1px solid #4ecdc4;
+            border-radius: 10px;
+            padding: 15px;
+            width: 250px;
+            z-index: 100;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+            transform: translateY(100px);
+            opacity: 0;
+            transition: all 0.5s ease;
+        }
+        
+        .mini-ad.show {
+            transform: translateY(0);
+            opacity: 1;
+        }
+        
+        .mini-ad h4 {
+            color: #4ecdc4;
+            margin-bottom: 8px;
+            font-size: 14px;
+        }
+        
+        .mini-ad p {
+            color: #aaa;
+            font-size: 12px;
             margin-bottom: 10px;
         }
         
-        .member-id {
-            font-size: 24px;
-            font-weight: bold;
-            color: #ff6b6b;
-            margin: 10px 0;
+        .mini-ad .mini-button {
+            display: block;
+            background: #4ecdc4;
+            color: white;
+            padding: 8px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-size: 12px;
+            text-align: center;
+        }
+        
+        .mini-ad .close-mini {
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            background: none;
+            border: none;
+            color: #aaa;
+            font-size: 16px;
+            cursor: pointer;
         }
         
         footer {
@@ -403,10 +524,46 @@
                 flex-direction: column;
                 gap: 15px;
             }
+            
+            .popup-ad {
+                width: 95%;
+                padding: 20px;
+            }
+            
+            .mini-ad {
+                width: 200px;
+                right: 10px;
+                bottom: 10px;
+            }
         }
     </style>
 </head>
 <body>
+    <!-- 跳出廣告 -->
+    <div class="overlay" id="overlay"></div>
+    
+    <div class="popup-ad" id="popupAd">
+        <button class="close-btn" onclick="closePopupAd()">×</button>
+        <h3>推薦商品</h3>
+        <div class="ad-content">
+            <h4 id="popupAdTitle">命理開運商品</h4>
+            <p id="popupAdDesc">精選命理相關商品，為您帶來好運氣</p>
+            <div style="margin-top: 15px; font-size: 14px; color: #ffd166;">
+                <span id="popupAdCategory">書籍雜誌</span> • 
+                <span id="popupAdPrice">NT$ 450</span>
+            </div>
+        </div>
+        <button class="popup-button" onclick="visitAd()">查看詳情</button>
+    </div>
+    
+    <!-- 小方塊廣告 -->
+    <div class="mini-ad" id="miniAd">
+        <button class="close-mini" onclick="closeMiniAd()">×</button>
+        <h4>運算完成推薦</h4>
+        <p>根據您的運勢結果，為您推薦相關商品</p>
+        <a href="#" class="mini-button" onclick="trackMiniAd()">立即查看</a>
+    </div>
+    
     <div class="container">
         <header>
             <h1>🔮 天機閣 - 專業命理服務</h1>
@@ -449,7 +606,7 @@
         
         <!-- 服務項目 -->
         <section class="services">
-            <div class="service-card">
+            <div class="service-card" onclick="showServiceAd('紫微斗數命盤', '紫微斗數相關商品推薦')">
                 <div class="service-icon">♈️</div>
                 <h3>紫微斗數命盤</h3>
                 <p>專業紫微斗數排盤，分析命盤格局、大運流年，深入解讀人生軌跡與發展方向。</p>
@@ -459,10 +616,10 @@
                     <li>大運流年推算</li>
                     <li>專業命理師解讀</li>
                 </ul>
-                <a href="#consult" class="service-button">預約諮詢</a>
+                <button class="service-button">預約諮詢</button>
             </div>
             
-            <div class="service-card">
+            <div class="service-card" onclick="showServiceAd('八字命理分析', '八字命理相關商品推薦')">
                 <div class="service-icon">🔢</div>
                 <h3>八字命理分析</h3>
                 <p>八字四柱排盤，分析五行生剋、十神格局，預測流年運勢與人生發展趨勢。</p>
@@ -472,10 +629,10 @@
                     <li>十神格局解讀</li>
                     <li>流年運勢預測</li>
                 </ul>
-                <a href="#consult" class="service-button">預約諮詢</a>
+                <button class="service-button">預約諮詢</button>
             </div>
             
-            <div class="service-card">
+            <div class="service-card" onclick="showServiceAd('姓名學分析', '姓名學相關商品推薦')">
                 <div class="service-icon">✍️</div>
                 <h3>姓名學分析</h3>
                 <p>姓名筆劃分析，結合八字五行，為您提供改名建議與命名服務，改善運勢。</p>
@@ -485,10 +642,10 @@
                     <li>改名建議服務</li>
                     <li>命名方案提供</li>
                 </ul>
-                <a href="#consult" class="service-button">預約諮詢</a>
+                <button class="service-button">預約諮詢</button>
             </div>
             
-            <div class="service-card">
+            <div class="service-card" onclick="showServiceAd('手相面相解讀', '手相面相相關商品推薦')">
                 <div class="service-icon">🖐️</div>
                 <h3>手相面相解讀</h3>
                 <p>透過手相紋路與面相特徵分析性格特質、事業發展、感情婚姻與健康狀況。</p>
@@ -498,14 +655,14 @@
                     <li>性格特質分析</li>
                     <li>健康狀況評估</li>
                 </ul>
-                <a href="#consult" class="service-button">預約諮詢</a>
+                <button class="service-button">預約諮詢</button>
             </div>
         </section>
         
         <!-- 廣告區域 -->
         <section class="ad-section">
             <h2>命理開運推薦</h2>
-            <p>以下為命理相關推薦商品，點擊了解詳情：</p>
+            <p>以下為命理相關推薦商品：</p>
             
             <div class="ad-grid">
                 <div class="ad-card">
@@ -515,10 +672,7 @@
                         <span class="ad-category">書籍雜誌</span>
                         <span class="ad-price">NT$ 450</span>
                     </div>
-                    <div class="ad-commission">
-                        <span class="commission-badge">佣金 8%</span>
-                    </div>
-                    <a href="#" class="ad-button" onclick="trackAd('destiny-book-1')">🔗 查看詳情</a>
+                    <a href="#" class="ad-button" onclick="trackAd('destiny-book-1')">查看詳情</a>
                 </div>
                 
                 <div class="ad-card">
@@ -528,10 +682,7 @@
                         <span class="ad-category">其他類別</span>
                         <span class="ad-price">NT$ 1,280</span>
                     </div>
-                    <div class="ad-commission">
-                        <span class="commission-badge">佣金 12%</span>
-                    </div>
-                    <a href="#" class="ad-button" onclick="trackAd('destiny-crystal-1')">🔗 查看詳情</a>
+                    <a href="#" class="ad-button" onclick="trackAd('destiny-crystal-1')">查看詳情</a>
                 </div>
                 
                 <div class="ad-card">
@@ -541,10 +692,7 @@
                         <span class="ad-category">教育學習</span>
                         <span class="ad-price">NT$ 2,800</span>
                     </div>
-                    <div class="ad-commission">
-                        <span class="commission-badge">佣金 15%</span>
-                    </div>
-                    <a href="#" class="ad-button" onclick="trackAd('destiny-course-1')">🔗 查看詳情</a>
+                    <a href="#" class="ad-button" onclick="trackAd('destiny-course-1')">查看詳情</a>
                 </div>
                 
                 <div class="ad-card">
@@ -554,21 +702,8 @@
                         <span class="ad-category">教育學習</span>
                         <span class="ad-price">NT$ 1,980</span>
                     </div>
-                    <div class="ad-commission">
-                        <span class="commission-badge">佣金 10%</span>
-                    </div>
-                    <a href="#" class="ad-button" onclick="trackAd('destiny-tool-1')">🔗 查看詳情</a>
+                    <a href="#" class="ad-button" onclick="trackAd('destiny-tool-1')">查看詳情</a>
                 </div>
-            </div>
-            
-            <div class="ichannels-info">
-                <h3>iChannels 廣告追蹤系統</h3>
-                <p>您的專屬會員ID：</p>
-                <div class="member-id">3QWtn</div>
-                <p>點擊上方廣告即可開始賺取佣金，所有點擊均透過iChannels通路王追蹤。</p>
-                <p style="color: #ffd166; margin-top: 15px;">
-                    💰 佣金即時計算，每月結算付款
-                </p>
             </div>
         </section>
         
@@ -582,17 +717,47 @@
             
             <div class="copyright">
                 <p>© 2026 天機閣專業命理服務</p>
-                <p style="margin-top: 10px;">
-                    廣告聲明：本網站包含聯盟行銷廣告連結，當您點擊連結並購買商品時，我們可能會獲得佣金。
-                </p>
-                <p style="margin-top: 10px; font-size: 12px;">
-                    網站開發：龍蝦粥技術團隊 | 廣告合作：iChannels 通路王
-                </p>
             </div>
         </footer>
     </div>
     
     <script>
+        // 廣告資料庫
+        const ads = [
+            {
+                id: 'destiny-book-1',
+                title: '紫微斗數入門經典',
+                description: '專業命理教學書籍，從基礎到進階完整教學',
+                category: '書籍雜誌',
+                price: 'NT$ 450',
+                service: '紫微斗數'
+            },
+            {
+                id: 'destiny-crystal-1',
+                title: '天然開運水晶手鍊',
+                description: '精選天然水晶，提升正能量與好運氣',
+                category: '其他類別',
+                price: 'NT$ 1,280',
+                service: '開運物品'
+            },
+            {
+                id: 'destiny-course-1',
+                title: '八字命理線上課程',
+                description: '專業命理師親自教學，隨時隨地學習',
+                category: '教育學習',
+                price: 'NT$ 2,800',
+                service: '八字命理'
+            },
+            {
+                id: 'destiny-tool-1',
+                title: '專業命理排盤工具',
+                description: '電腦排盤軟體，快速準確分析命盤',
+                category: '教育學習',
+                price: 'NT$ 1,980',
+                service: '命理工具'
+            }
+        ];
+        
         // 運勢查詢功能
         function getFortune() {
             const birthDate = document.getElementById('birth-date').value;
@@ -653,38 +818,111 @@
             
             document.getElementById('fortune-result').style.display = 'block';
             
+            // 顯示小方塊廣告（運算完成後）
+            setTimeout(() => {
+                showMiniAd();
+            }, 1000);
+            
             // 滾動到結果
             document.getElementById('fortune-result').scrollIntoView({ behavior: 'smooth' });
         }
         
-        // 廣告點擊追蹤
+        // 顯示服務相關跳出廣告
+        function showServiceAd(serviceName, adDescription) {
+            const relatedAds = ads.filter(ad => 
+                ad.service.includes(serviceName) || 
+                serviceName.includes(ad.service)
+            );
+            
+            const ad = relatedAds.length > 0 ? relatedAds[0] : ads[0];
+            
+            document.getElementById('popupAdTitle').textContent = ad.title;
+            document.getElementById('popupAdDesc').textContent = ad.description;
+            document.getElementById('popupAdCategory').textContent = ad.category;
+            document.getElementById('popupAdPrice').textContent = ad.price;
+            
+            // 儲存當前廣告ID
+            window.currentAdId = ad.id;
+            
+            // 顯示跳出廣告
+            document.getElementById('overlay').classList.add('active');
+            document.getElementById('popupAd').classList.add('active');
+        }
+        
+        // 關閉跳出廣告
+        function closePopupAd() {
+            document.getElementById('overlay').classList.remove('active');
+            document.getElementById('popupAd').classList.remove('active');
+        }
+        
+        // 訪問廣告
+        function visitAd() {
+            if (window.currentAdId) {
+                trackAd(window.currentAdId);
+            }
+            closePopupAd();
+        }
+        
+        // 顯示小方塊廣告
+        function showMiniAd() {
+            const miniAd = document.getElementById('miniAd');
+            miniAd.classList.add('show');
+            
+            // 10秒後自動隱藏
+            setTimeout(() => {
+                miniAd.classList.remove('show');
+            }, 10000);
+        }
+        
+        // 關閉小方塊廣告
+        function closeMiniAd() {
+            document.getElementById('miniAd').classList.remove('show');
+        }
+        
+        // 追蹤小方塊廣告點擊
+        function trackMiniAd() {
+            const randomAd = ads[Math.floor(Math.random() * ads.length)];
+            trackAd(randomAd.id);
+            closeMiniAd();
+        }
+        
+        // 廣告點擊追蹤（後台記錄，不顯示給用戶）
         function trackAd(adId) {
-            console.log(`天機閣廣告點擊追蹤: ${adId}`);
-            console.log(`iChannels 會員ID: 3QWtn`);
-            
-            alert(`廣告追蹤: ${adId}\n會員ID: 3QWtn\n即將導向商品頁面...`);
-            
-            // 模擬iChannels追蹤
+            // 後台追蹤記錄
             const trackData = {
                 adId: adId,
-                service: 'destiny',
-                memberId: '3QWtn',
+                memberId: '3QWtn', // 後台使用，不顯示
                 timestamp: new Date().toISOString(),
-                pageUrl: window.location.href
+                pageUrl: window.location.href,
+                userAgent: navigator.userAgent
             };
             
-            console.log('追蹤資料:', trackData);
+            console.log('廣告追蹤（後台）:', trackData);
+            
+            // 模擬跳轉
+            alert('即將導向商品頁面...');
+            
+            // 實際會發送到iChannels追蹤系統
+            // fetch('/api/track-ad', { method: 'POST', body: JSON.stringify(trackData) });
             
             return true;
         }
         
         // 頁面載入完成
         document.addEventListener('DOMContentLoaded', function() {
-            console.log('天機閣網站載入完成 - 今日運勢置頂版本');
+            console.log('天機閣網站載入完成 - 廣告系統優化版');
             
             // 設定今天為預設日期
             const today = new Date().toISOString().split('T')[0];
             document.getElementById('birth-date').value = today;
+            
+            // 點擊遮罩層關閉廣告
+            document.getElementById('overlay').addEventListener('click', closePopupAd);
+            
+            // 5秒後顯示小方塊廣告（首次進入）
+            setTimeout(() => {
+                showMiniAd();
+            }, 5000);
         });
     </script>
 </body>

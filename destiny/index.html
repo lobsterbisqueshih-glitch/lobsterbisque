@@ -34,6 +34,7 @@
             margin: 0 auto;
         }
         
+        /* 原始設計的 header */
         header {
             text-align: center;
             padding: 40px 0;
@@ -54,6 +55,7 @@
             margin: 0 auto;
         }
         
+        /* 服務卡片 */
         .services {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -68,6 +70,11 @@
             text-align: center;
             backdrop-filter: blur(10px);
             border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: transform 0.3s ease;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-5px);
         }
         
         .service-card h3 {
@@ -75,6 +82,7 @@
             color: var(--accent);
         }
         
+        /* 廣告區域 - 空容器 */
         .ad-section {
             margin: 40px 0;
         }
@@ -97,12 +105,18 @@
             gap: 20px;
         }
         
+        /* 廣告卡片樣式 - 將由 JavaScript 動態生成 */
         .ad-card {
             background: rgba(255, 255, 255, 0.1);
             border-radius: 10px;
             overflow: hidden;
             backdrop-filter: blur(10px);
             border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: transform 0.3s ease;
+        }
+        
+        .ad-card:hover {
+            transform: translateY(-5px);
         }
         
         .ad-card img {
@@ -134,6 +148,11 @@
             text-decoration: none;
             border-radius: 5px;
             font-weight: bold;
+            transition: background 0.3s ease;
+        }
+        
+        .ad-link:hover {
+            background: var(--accent-secondary);
         }
         
         footer {
@@ -142,15 +161,23 @@
             opacity: 0.7;
             font-size: 0.9rem;
         }
+        
+        @media (max-width: 768px) {
+            .services, .ad-container {
+                grid-template-columns: 1fr;
+            }
+        }
     </style>
 </head>
 <body>
     <div class="container">
+        <!-- 原始設計的 header -->
         <header>
             <h1>🔮 天機閣 - 專業命理服務</h1>
             <p>專業命理服務：今日運勢查詢、紫微斗數、八字命理、姓名學分析、靈籤堂抽籤。</p>
         </header>
         
+        <!-- 服務卡片 -->
         <div class="services">
             <div class="service-card">
                 <h3>今日運勢查詢</h3>
@@ -170,12 +197,14 @@
             </div>
         </div>
         
+        <!-- 廣告區域 - 完全空容器 -->
         <div class="ad-section">
             <h2>精選推薦</h2>
             <p>以下為精選商品，點擊圖片了解更多：</p>
             
             <div class="ad-container" id="destiny-ad-container">
-                <!-- 廣告由 JavaScript 動態生成 -->
+                <!-- 廣告卡片將由 JavaScript 動態生成 -->
+                <!-- 完全沒有預設內容，符合廣告分離架構 -->
             </div>
         </div>
         
@@ -184,13 +213,15 @@
         </footer>
     </div>
     
+    <!-- 載入廣告系統 -->
     <script src="ads/ads.js"></script>
     <script>
-        // 簡單的廣告載入
+        // 簡單的廣告載入 - 符合廣告分離架構
         document.addEventListener('DOMContentLoaded', function() {
+            const container = document.getElementById('destiny-ad-container');
+            
             if (window.destinyAds && window.destinyAds.length > 0) {
-                const container = document.getElementById('destiny-ad-container');
-                
+                // 動態生成廣告卡片
                 window.destinyAds.forEach(ad => {
                     const card = document.createElement('div');
                     card.className = 'ad-card';
@@ -205,9 +236,12 @@
                     container.appendChild(card);
                 });
             } else {
-                // 如果沒有廣告資料，顯示提示
-                const container = document.getElementById('destiny-ad-container');
-                container.innerHTML = '<p style="text-align:center;opacity:0.7;">廣告載入中...</p>';
+                // 載入中提示
+                container.innerHTML = `
+                    <div style="text-align:center;padding:40px;opacity:0.7;">
+                        <p>廣告載入中...</p>
+                    </div>
+                `;
             }
         });
     </script>

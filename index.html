@@ -32,6 +32,7 @@
             margin: 0 auto;
         }
         
+        /* 原始設計的 header */
         header {
             text-align: center;
             padding: 40px 0;
@@ -50,6 +51,7 @@
             margin: 0 auto;
         }
         
+        /* 服務網格 */
         .portal-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -107,6 +109,7 @@
             background: var(--secondary);
         }
         
+        /* 廣告區域 - 空容器 */
         .ad-section {
             background: white;
             border-radius: 15px;
@@ -133,6 +136,7 @@
             gap: 20px;
         }
         
+        /* 廣告卡片 - 將由 JavaScript 動態生成 */
         .ad-card {
             background: #f9f9f9;
             border-radius: 10px;
@@ -185,11 +189,13 @@
 </head>
 <body>
     <div class="container">
+        <!-- 原始設計的 header -->
         <header>
             <h1>多服務入口網站</h1>
             <p>整合各項命理服務與精選推薦，一站式滿足您的需求</p>
         </header>
         
+        <!-- 服務網格 -->
         <div class="portal-grid">
             <div class="portal-card">
                 <img src="https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?w=400&h=250&fit=crop" alt="天機閣">
@@ -219,12 +225,14 @@
             </div>
         </div>
         
+        <!-- 廣告區域 - 完全空容器 -->
         <div class="ad-section">
             <h2>熱門推薦</h2>
             <p>精選商品推薦，提升生活品質</p>
             
             <div class="ad-container" id="portal-ad-container">
-                <!-- 廣告由 JavaScript 動態生成 -->
+                <!-- 廣告卡片將由 JavaScript 動態生成 -->
+                <!-- 完全沒有預設內容，符合廣告分離架構 -->
             </div>
         </div>
         
@@ -233,13 +241,15 @@
         </footer>
     </div>
     
+    <!-- 載入廣告系統 -->
     <script src="ads/ads.js"></script>
     <script>
-        // 載入入口網站廣告
+        // 簡單的廣告載入 - 符合廣告分離架構
         document.addEventListener('DOMContentLoaded', function() {
+            const container = document.getElementById('portal-ad-container');
+            
             if (window.portalAds && window.portalAds.length > 0) {
-                const container = document.getElementById('portal-ad-container');
-                
+                // 動態生成廣告卡片
                 window.portalAds.forEach(ad => {
                     const card = document.createElement('div');
                     card.className = 'ad-card';
@@ -254,8 +264,14 @@
                     container.appendChild(card);
                 });
             } else {
-                const container = document.getElementById('portal-ad-container');
-                container.innerHTML = '<p style="text-align:center;color:#666;">廣告載入中...</p>';
+                // 載入中提示
+                container.innerHTML = `
+                    <div style="text-align:center;padding:40px;color:#666;">
+                        <p>廣告載入中...</p>
+                    </div>
+                `;
             }
         });
     </script>
+</body>
+</html>

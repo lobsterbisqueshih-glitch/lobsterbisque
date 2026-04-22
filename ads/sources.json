@@ -1,0 +1,103 @@
+{
+  "sources": {
+    "iChannels": {
+      "enabled": true,
+      "priority": 1,
+      "type": "affiliate",
+      "commission": "4-12%",
+      "requirements": ["台灣會員", "身分驗證"],
+      "notes": "目前主要來源，需解決驗證碼登入問題"
+    },
+    "AmazonAssociates": {
+      "enabled": false,
+      "priority": 2,
+      "type": "affiliate",
+      "commission": "1-10%",
+      "requirements": ["國際帳戶", "稅務資訊", "最低銷售額"],
+      "notes": "全球最大聯盟平台，需研究API整合",
+      "researchStatus": "pending",
+      "actionItems": [
+        "註冊帳號",
+        "申請API存取",
+        "測試商品搜尋API",
+        "整合到廣告系統"
+      ]
+    },
+    "AffiliateNetwork": {
+      "enabled": false,
+      "priority": 3,
+      "type": "network",
+      "commission": "5-15%",
+      "requirements": ["網站審核", "流量證明"],
+      "notes": "台灣本地聯盟網，需研究合作方式",
+      "researchStatus": "pending",
+      "actionItems": [
+        "研究聯盟網註冊流程",
+        "準備網站資料",
+        "申請廣告主合作",
+        "測試廣告素材"
+      ]
+    },
+    "GoogleAdSense": {
+      "enabled": false,
+      "priority": 4,
+      "type": "display",
+      "commission": "CPC/CPM",
+      "requirements": ["網站內容", "隱私政策", "流量要求"],
+      "notes": "被動收入來源，需網站有一定流量",
+      "researchStatus": "pending",
+      "actionItems": [
+        "申請AdSense帳號",
+        "添加網站驗證",
+        "放置廣告代碼",
+        "優化廣告位置"
+      ]
+    },
+    "OtherSources": {
+      "enabled": false,
+      "priority": 5,
+      "type": "multiple",
+      "sources": [
+        "Shopify Affiliate",
+        "eBay Partner Network",
+        "Rakuten Advertising",
+        "CJ Affiliate"
+      ],
+      "notes": "國際聯盟平台，需英文網站和國際流量",
+      "researchStatus": "future"
+    }
+  },
+  "integrationPlan": {
+    "phase1": {
+      "goal": "穩定現有iChannels廣告",
+      "tasks": [
+        "解決驗證碼登入問題",
+        "取得更多有效推廣碼",
+        "建立廣告輪播系統",
+        "實施監控機制"
+      ],
+      "status": "in-progress"
+    },
+    "phase2": {
+      "goal": "整合Amazon Associates",
+      "tasks": [
+        "註冊Amazon Associates帳號",
+        "研究Product Advertising API",
+        "開發商品搜尋與推薦",
+        "測試廣告點擊追蹤"
+      ],
+      "status": "pending"
+    },
+    "phase3": {
+      "goal": "多元化廣告來源",
+      "tasks": [
+        "申請聯盟網合作",
+        "設置Google AdSense",
+        "開發廣告來源切換系統",
+        "優化廣告收益分析"
+      ],
+      "status": "future"
+    }
+  },
+  "notes": "廣告來源多元化是提高收益和穩定性的關鍵。應主動研究並整合多個來源，避免單一來源風險。"
+}

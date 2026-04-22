@@ -47,7 +47,7 @@ const portalAds = [
 ];
 
 // ============================================================
-// 天機閣廣告（暫時只使用真正有效的推廣碼）
+// 天機閣廣告（使用廣告輪播系統）
 // ============================================================
 const destinyAds = [
     {
@@ -57,39 +57,39 @@ const destinyAds = [
         category: '服飾內衣',
         service: '生活用品',
         image: 'https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=400&h=250&fit=crop',
-        link: 'https://shoppingfun.co/3QW_R'  // 唯一真正有效的推廣碼
+        link: 'https://shoppingfun.co/3QW_R'
     },
     {
         id: 'destiny-ad-2',
-        title: '更多商品即將上線',
-        description: '正在尋找更多優質商品，敬請期待',
-        category: '即將上線',
+        title: '舒適居家內衣',
+        description: '適合居家穿著，柔軟親膚',
+        category: '居家服飾',
         service: '生活用品',
         image: 'https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?w=400&h=250&fit=crop',
-        link: '#'  // 暫時留空
+        link: 'https://shoppingfun.co/3QW_R'
     },
     {
         id: 'destiny-ad-3',
-        title: '精選商品籌備中',
-        description: '為您挑選最優質的商品',
-        category: '籌備中',
+        title: '限時優惠內衣',
+        description: '精選款式，特價優惠',
+        category: '特價商品',
         service: '生活用品',
         image: 'https://images.unsplash.com/photo-1516035069371-29a1b244cc32?w=400&h=250&fit=crop',
-        link: '#'  // 暫時留空
+        link: 'https://shoppingfun.co/3QW_R'
     },
     {
         id: 'destiny-ad-4',
-        title: '限時優惠準備中',
-        description: '優惠活動即將開始',
-        category: '準備中',
+        title: '新款內衣上市',
+        description: '最新款式，時尚設計',
+        category: '新品上市',
         service: '生活用品',
         image: 'https://images.unsplash.com/photo-1589998059171-988d887df646?w=400&h=250&fit=crop',
-        link: '#'  // 暫時留空
+        link: 'https://shoppingfun.co/3QW_R'
     }
 ];
 
 // ============================================================
-// 運勢結果頁廣告（暫時只使用真正有效的推廣碼）
+// 運勢結果頁廣告（使用廣告輪播系統）
 // ============================================================
 const resultAds = [
     {
@@ -98,23 +98,23 @@ const resultAds = [
         description: '舒適透氣內衣，限時優惠中',
         image: 'https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?w=400&h=200&fit=crop',
         buttonText: '立即查看',
-        link: 'https://shoppingfun.co/3QW_R'  // 唯一真正有效的推廣碼
+        link: 'https://shoppingfun.co/3QW_R'
     },
     {
         id: 'result-ad-2',
-        title: '更多商品籌備中',
-        description: '正在為您尋找優質商品',
+        title: '居家舒適內衣',
+        description: '柔軟親膚，適合日常穿著',
         image: 'https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=400&h=200&fit=crop',
-        buttonText: '敬請期待',
-        link: '#'  // 暫時留空
+        buttonText: '了解更多',
+        link: 'https://shoppingfun.co/3QW_R'
     },
     {
         id: 'result-ad-3',
-        title: '優惠活動準備中',
-        description: '限時優惠即將開始',
+        title: '新款內衣推薦',
+        description: '時尚設計，提升自信',
         image: 'https://images.unsplash.com/photo-1516035069371-29a1b244cc32?w=400&h=200&fit=crop',
-        buttonText: '即將上線',
-        link: '#'  // 暫時留空
+        buttonText: '開始選購',
+        link: 'https://shoppingfun.co/3QW_R'
     }
 ];
 

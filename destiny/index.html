@@ -7,14 +7,7 @@
     <meta name="description" content="專業命理服務：今日運勢查詢、紫微斗數、八字命理、姓名學分析。">
     <style>
         :root {
-        /* 裝置類別 */
-        .desktop-only {
-            display: block;
-        }
-        
-        .mobile-only {
-            display: none;
-        }            --primary: #2d1b3d;
+            --primary: #2d1b3d;
             --secondary: #1a1a2e;
             --accent: #ff6b6b;
             --accent-secondary: #ff8e53;
@@ -153,6 +146,52 @@
             box-shadow: 0 10px 20px rgba(255,107,107,0.3);
         }
         
+        /* 運勢結果中間廣告 */
+        .result-ad {
+            background: rgba(255,107,107,0.1);
+            border-radius: 12px;
+            padding: 20px;
+            margin: 25px 0;
+            border: 1px solid rgba(255,107,107,0.3);
+            text-align: center;
+        }
+        
+        .result-ad h4 {
+            color: #ffd166;
+            margin-bottom: 10px;
+            font-size: 18px;
+        }
+        
+        .result-ad p {
+            color: #aaa;
+            margin-bottom: 15px;
+            font-size: 14px;
+        }
+        
+        .result-ad-image {
+            width: 100%;
+            height: 120px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
+        
+        .result-ad-button {
+            display: inline-block;
+            background: #ff6b6b;
+            color: white;
+            padding: 8px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-size: 14px;
+            transition: all 0.3s;
+        }
+        
+        .result-ad-button:hover {
+            background: #ff8e53;
+            transform: translateY(-2px);
+        }
+        
         /* 服務項目 */
         .services {
             display: grid;
@@ -233,7 +272,7 @@
             box-shadow: 0 10px 20px rgba(255,107,107,0.3);
         }
         
-        /* 廣告區域 */
+        /* 廣告區域 - 所有廣告都有圖案 */
         .ad-section {
             background: rgba(255,255,255,0.05);
             border-radius: 20px;
@@ -274,6 +313,15 @@
             transform: translateY(-5px);
             border-color: var(--accent);
             box-shadow: 0 10px 20px rgba(255,107,107,0.2);
+        }
+        
+        .ad-image {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin-bottom: 15px;
+            border: 1px solid rgba(255,255,255,0.1);
         }
         
         .ad-card h4 {
@@ -370,6 +418,14 @@
             margin-bottom: 20px;
         }
         
+        .popup-ad .popup-image {
+            width: 100%;
+            height: 120px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
+        
         .popup-ad .close-btn {
             position: absolute;
             top: 15px;
@@ -455,6 +511,14 @@
             margin-bottom: 10px;
         }
         
+        .mini-ad .mini-image {
+            width: 100%;
+            height: 80px;
+            object-fit: cover;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+        
         .mini-ad .mini-button {
             display: block;
             background: #4ecdc4;
@@ -511,17 +575,6 @@
         }
         
         @media (max-width: 768px) {
-            .desktop-only {
-                display: none !important;
-            }
-            
-            .mobile-only {
-                display: block !important;
-            }
-            
-            .container {
-                padding: 10px;
-            }
             h1 {
                 font-size: 36px;
             }
@@ -553,6 +606,10 @@
                 right: 10px;
                 bottom: 10px;
             }
+            
+            .result-ad-image {
+                height: 100px;
+            }
         }
     </style>
 </head>
@@ -564,6 +621,7 @@
         <button class="close-btn" onclick="closePopupAd()">×</button>
         <h3>推薦商品</h3>
         <div class="ad-content">
+            <img src="https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=400&h=200&fit=crop" alt="推薦商品" class="popup-image">
             <h4 id="popupAdTitle">命理開運商品</h4>
             <p id="popupAdDesc">精選命理相關商品，為您帶來好運氣</p>
             <div style="margin-top: 15px; font-size: 14px; color: #ffd166;">
@@ -577,6 +635,7 @@
     <!-- 小方塊廣告 -->
     <div class="mini-ad" id="miniAd">
         <button class="close-mini" onclick="closeMiniAd()">×</button>
+        <img src="https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?w=200&h=100&fit=crop" alt="開運商品" class="mini-image">
         <h4>運算完成推薦</h4>
         <p>根據您的運勢結果，為您推薦相關商品</p>
         <a href="#" class="mini-button" onclick="trackMiniAd()">立即查看</a>
@@ -677,13 +736,14 @@
             </div>
         </section>
         
-        <!-- 廣告區域 -->
+        <!-- 廣告區域 - 所有廣告都有圖案 -->
         <section class="ad-section">
             <h2>命理開運推薦</h2>
-            <p>以下為命理相關推薦商品：</p>
+            <p>以下為命理相關推薦商品，點擊圖片了解更多：</p>
             
             <div class="ad-grid">
                 <div class="ad-card">
+                    <img src="https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=400&h=250&fit=crop" alt="紫微斗數書籍" class="ad-image">
                     <h4>紫微斗數入門經典</h4>
                     <p>專業命理教學書籍，從基礎到進階完整教學</p>
                     <div class="ad-meta">
@@ -694,6 +754,7 @@
                 </div>
                 
                 <div class="ad-card">
+                    <img src="https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?w=400&h=250&fit=crop" alt="開運水晶" class="ad-image">
                     <h4>天然開運水晶手鍊</h4>
                     <p>精選天然水晶，提升正能量與好運氣</p>
                     <div class="ad-meta">
@@ -704,6 +765,7 @@
                 </div>
                 
                 <div class="ad-card">
+                    <img src="https://images.unsplash.com/photo-1516035069371-29a1b244cc32?w=400&h=250&fit=crop" alt="線上課程" class="ad-image">
                     <h4>八字命理線上課程</h4>
                     <p>專業命理師親自教學，隨時隨地學習</p>
                     <div class="ad-meta">
@@ -714,6 +776,7 @@
                 </div>
                 
                 <div class="ad-card">
+                    <img src="https://images.unsplash.com/photo-1589998059171-988d887df646?w=400&h=250&fit=crop" alt="排盤工具" class="ad-image">
                     <h4>專業命理排盤工具</h4>
                     <p>電腦排盤軟體，快速準確分析命盤</p>
                     <div class="ad-meta">
@@ -740,7 +803,7 @@
     </div>
     
     <script>
-        // 廣告資料庫
+        // 廣告資料庫 - 所有廣告都有圖案
         const ads = [
             {
                 id: 'destiny-book-1',
@@ -748,7 +811,8 @@
                 description: '專業命理教學書籍，從基礎到進階完整教學',
                 category: '書籍雜誌',
                 price: 'NT$ 450',
-                service: '紫微斗數'
+                service: '紫微斗數',
+                image: 'https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=400&h=250&fit=crop'
             },
             {
                 id: 'destiny-crystal-1',
@@ -756,7 +820,8 @@
                 description: '精選天然水晶，提升正能量與好運氣',
                 category: '其他類別',
                 price: 'NT$ 1,280',
-                service: '開運物品'
+                service: '開運物品',
+                image: 'https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?w=400&h=250&fit=crop'
             },
             {
                 id: 'destiny-course-1',
@@ -764,7 +829,8 @@
                 description: '專業命理師親自教學，隨時隨地學習',
                 category: '教育學習',
                 price: 'NT$ 2,800',
-                service: '八字命理'
+                service: '八字命理',
+                image: 'https://images.unsplash.com/photo-1516035069371-29a1b244cc32?w=400&h=250&fit=crop'
             },
             {
                 id: 'destiny-tool-1',
@@ -772,11 +838,37 @@
                 description: '電腦排盤軟體，快速準確分析命盤',
                 category: '教育學習',
                 price: 'NT$ 1,980',
-                service: '命理工具'
+                service: '命理工具',
+                image: 'https://images.unsplash.com/photo-1589998059171-988d887df646?w=400&h=250&fit=crop'
             }
         ];
         
-        // 運勢查詢功能
+        // 運勢結果中間廣告資料
+        const resultAds = [
+            {
+                id: 'result-ad-1',
+                title: '根據您的運勢推薦',
+                description: '開運水晶手鍊，提升今日好運氣',
+                image: 'https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?w=400&h=200&fit=crop',
+                buttonText: '立即查看'
+            },
+            {
+                id: 'result-ad-2',
+                title: '運勢相關商品',
+                description: '命理書籍，深入了解運勢原理',
+                image: 'https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=400&h=200&fit=crop',
+                buttonText: '了解更多'
+            },
+            {
+                id: 'result-ad-3',
+                title: '提升運勢推薦',
+                description: '線上課程，學習改善運勢方法',
+                image: 'https://images.unsplash.com/photo-1516035069371-29a1b244cc32?w=400&h=200&fit=crop',
+                buttonText: '開始學習'
+            }
+        ];
+        
+        // 運勢查詢功能 - 在結果中間插入廣告
         function getFortune() {
             const birthDate = document.getElementById('birth-date').value;
             const questionType = document.getElementById('question-type').value;
@@ -822,9 +914,22 @@
             
             const fortune = fortunes[questionType] || fortunes.general;
             
-            document.getElementById('fortune-content').innerHTML = `
+            // 隨機選擇一個結果中間廣告
+            const resultAd = resultAds[Math.floor(Math.random() * resultAds.length)];
+            
+            // 建立運勢結果HTML，在中間插入廣告
+            const fortuneHTML = `
                 <p><strong>${fortune.title}</strong></p>
                 <p>${fortune.content}</p>
+                
+                <!-- 結果中間廣告 -->
+                <div class="result-ad">
+                    <img src="${resultAd.image}" alt="${resultAd.title}" class="result-ad-image">
+                    <h4>${resultAd.title}</h4>
+                    <p>${resultAd.description}</p>
+                    <a href="#" class="result-ad-button" onclick="trackAd('${resultAd.id}')">${resultAd.buttonText}</a>
+                </div>
+                
                 <div style="margin-top: 15px;">
                     <span style="color: #ffd166;">幸運色：${fortune.luckyColor}</span> | 
                     <span style="color: #ffd166;">幸運數字：${fortune.luckyNumber}</span>
@@ -834,6 +939,7 @@
                 </p>
             `;
             
+            document.getElementById('fortune-content').innerHTML = fortuneHTML;
             document.getElementById('fortune-result').style.display = 'block';
             
             // 顯示小方塊廣告（運算完成後）
@@ -858,6 +964,13 @@
             document.getElementById('popupAdDesc').textContent = ad.description;
             document.getElementById('popupAdCategory').textContent = ad.category;
             document.getElementById('popupAdPrice').textContent = ad.price;
+            
+            // 更新跳出廣告圖片
+            const popupImage = document.querySelector('.popup-image');
+            if (popupImage) {
+                popupImage.src = ad.image;
+                popupImage.alt = ad.title;
+            }
             
             // 儲存當前廣告ID
             window.currentAdId = ad.id;
@@ -884,6 +997,31 @@
         // 顯示小方塊廣告
         function showMiniAd() {
             const miniAd = document.getElementById('miniAd');
+            
+            // 隨機選擇一個廣告
+            const randomAd = ads[Math.floor(Math.random() * ads.length)];
+            
+            // 更新小方塊廣告內容
+            const miniImage = miniAd.querySelector('.mini-image');
+            if (miniImage) {
+                miniImage.src = randomAd.image;
+                miniImage.alt = randomAd.title;
+            }
+            
+            const miniTitle = miniAd.querySelector('h4');
+            if (miniTitle) {
+                miniTitle.textContent = randomAd.title;
+            }
+            
+            const miniDesc = miniAd.querySelector('p');
+            if (miniDesc) {
+                miniDesc.textContent = randomAd.description;
+            }
+            
+            // 儲存當前廣告ID
+            window.currentMiniAdId = randomAd.id;
+            
+            // 顯示小方塊廣告
             miniAd.classList.add('show');
             
             // 10秒後自動隱藏
@@ -899,8 +1037,9 @@
         
         // 追蹤小方塊廣告點擊
         function trackMiniAd() {
-            const randomAd = ads[Math.floor(Math.random() * ads.length)];
-            trackAd(randomAd.id);
+            if (window.currentMiniAdId) {
+                trackAd(window.currentMiniAdId);
+            }
             closeMiniAd();
         }
         
@@ -941,94 +1080,44 @@
             setTimeout(() => {
                 showMiniAd();
             }, 5000);
-        });
-<script>
-// 修復廣告pop up問題
-console.log('廣告系統初始化...');
-
-// 確保函數存在
-if (typeof showServiceAd === 'undefined') {
-    console.error('showServiceAd函數未定義！');
-    // 重新定義函數
-    window.showServiceAd = function(serviceName, adDescription) {
-        console.log('showServiceAd被呼叫:', serviceName);
-        
-        // 簡單的廣告資料
-        const ads = [
-            {
-                id: 'test-ad-1',
-                title: '測試廣告 - ' + serviceName,
-                description: adDescription,
-                category: '測試類別',
-                price: 'NT$ 999',
-                service: serviceName
+            
+            // 修復廣告pop up問題
+            if (typeof showServiceAd === 'undefined') {
+                console.error('showServiceAd函數未定義！');
+                // 重新定義函數
+                window.showServiceAd = function(serviceName, adDescription) {
+                    console.log('showServiceAd被呼叫:', serviceName);
+                    alert('服務廣告: ' + serviceName + '\n' + adDescription);
+                };
             }
-        ];
-        
-        const ad = ads[0];
-        
-        // 更新廣告內容
-        const titleEl = document.getElementById('popupAdTitle');
-        const descEl = document.getElementById('popupAdDesc');
-        const categoryEl = document.getElementById('popupAdCategory');
-        const priceEl = document.getElementById('popupAdPrice');
-        
-        if (titleEl) titleEl.textContent = ad.title;
-        if (descEl) descEl.textContent = ad.description;
-        if (categoryEl) categoryEl.textContent = ad.category;
-        if (priceEl) priceEl.textContent = ad.price;
-        
-        // 儲存當前廣告ID
-        window.currentAdId = ad.id;
-        
-        // 顯示跳出廣告
-        const overlay = document.getElementById('overlay');
-        const popupAd = document.getElementById('popupAd');
-        
-        if (overlay && popupAd) {
-            overlay.classList.add('active');
-            popupAd.classList.add('active');
-            console.log('廣告pop up顯示成功');
-        } else {
-            console.error('找不到廣告元素！');
-            alert('測試廣告：' + serviceName + '\n' + adDescription);
-        }
-    };
-    
-    console.log('已重新定義showServiceAd函數');
-}
-
-// 測試按鈕
-function testAdPopup() {
-    console.log('測試廣告pop up...');
-    showServiceAd('測試服務', '測試廣告描述');
-}
-
-// 頁面載入完成後添加測試按鈕
-document.addEventListener('DOMContentLoaded', function() {
-    console.log('DOM載入完成，添加測試按鈕');
-    
-    // 在服務區域添加測試按鈕
-    const servicesSection = document.querySelector('.services');
-    if (servicesSection) {
-        const testButton = document.createElement('button');
-        testButton.textContent = '🔧 測試廣告pop up';
-        testButton.style.cssText = `
-            display: block;
-            margin: 20px auto;
-            padding: 10px 20px;
-            background: #ff6b6b;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 14px;
-        `;
-        testButton.onclick = testAdPopup;
-        servicesSection.appendChild(testButton);
-    }
-    
-    console.log('廣告系統準備完成');
-});</script>
+            
+            // 添加測試按鈕
+            const servicesSection = document.querySelector('.services');
+            if (servicesSection) {
+                const testButton = document.createElement('button');
+                testButton.textContent = '🔧 測試廣告系統';
+                testButton.style.cssText = `
+                    display: block;
+                    margin: 20px auto;
+                    padding: 10px 20px;
+                    background: #ff6b6b;
+                    color: white;
+                    border: none;
+                    border-radius: 5px;
+                    cursor: pointer;
+                    font-size: 14px;
+                `;
+                testButton.onclick = function() {
+                    // 測試運勢結果中間廣告
+                    getFortune();
+                    // 測試跳出廣告
+                    setTimeout(() => {
+                        showServiceAd('測試服務', '測試廣告描述');
+                    }, 2000);
+                };
+                servicesSection.appendChild(testButton);
+            }
+        });
+    </script>
 </body>
 </html>

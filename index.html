@@ -746,7 +746,7 @@
                 
                 <div class="ad-card mobile-only">
                     <img src="https://images.unsplash.com/photo-1589998059171-988d887df646?w=400&h=250&fit=crop" alt="工具">
-                    <h4>命理排盤工具</h4>
+                    <h4 class="ad-title">商品標題</h4>
                     <p>電腦排盤軟體，快速分析</p>
                     <a href="https://dreamstore.info/3QW_X" target="_blank" class="ad-button">查看詳情</a>
                 </div>
@@ -1093,3 +1093,31 @@ document.addEventListener('DOMContentLoaded', function() {
     <script src="ads/ads.js"></script>
 </body>
 </html>
+
+<script>
+// 動態載入廣告標題和描述
+document.addEventListener('DOMContentLoaded', function() {
+    // 載入 ads.js
+    const script = document.createElement('script');
+    script.src = 'ads/ads.js';
+    script.onload = function() {
+        // 更新入口網站廣告
+        updatePortalAds();
+    };
+    document.head.appendChild(script);
+});
+
+function updatePortalAds() {
+    if (!window.portalAds) return;
+    
+    // 更新各個廣告卡片
+    const adTitles = document.querySelectorAll('.ad-title');
+    const adDescs = document.querySelectorAll('.ad-description');
+    
+    // 使用 portalAds 中的資料
+    for (let i = 0; i < Math.min(adTitles.length, portalAds.length); i++) {
+        adTitles[i].textContent = portalAds[i].title;
+        adDescs[i].textContent = portalAds[i].description;
+    }
+}
+</script>

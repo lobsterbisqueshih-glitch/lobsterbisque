@@ -839,8 +839,8 @@
         
         <!-- 廣告區域 - 所有廣告都有圖案 -->
         <section class="ad-section">
-            <h2>生活用品推薦</h2>
-            <p>以下為精選生活用品，點擊圖片了解更多：</p>
+            <h2 id="destiny-ad-section-title">精選推薦</h2>
+            <p id="destiny-ad-section-desc">以下為精選商品，點擊圖片了解更多：</p>
             
             <div class="ad-grid">
                 <div class="ad-card">
@@ -856,8 +856,8 @@
                 
                 <div class="ad-card">
                     <img src="https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?w=400&h=250&fit=crop" alt="舒適內衣" class="ad-image">
-                    <h4>舒適透氣內衣</h4>
-                    <p>精選舒適內衣，提升生活品質</p>
+                    <h4 class="ad-title">商品標題</h4>
+                    <p class="ad-description">商品描述</p>
                     <div class="ad-meta">
                         <span class="ad-category">其他類別</span>
                         
@@ -867,8 +867,8 @@
                 
                 <div class="ad-card">
                     <img src="https://images.unsplash.com/photo-1516035069371-29a1b244cc32?w=400&h=250&fit=crop" alt="優質內衣" class="ad-image">
-                    <h4>優質內衣推薦</h4>
-                    <p>優質內衣推薦，舒適透氣材質</p>
+                    <h4 class="ad-title">商品標題</h4>
+                    <p class="ad-description">商品描述</p>
                     <div class="ad-meta">
                         <span class="ad-category">教育學習</span>
                         
@@ -878,7 +878,7 @@
                 
                 <div class="ad-card">
                     <img src="https://images.unsplash.com/photo-1589998059171-988d887df646?w=400&h=250&fit=crop" alt="舒適內衣" class="ad-image">
-                    <h4>舒適內衣推薦</h4>
+                    <h4 class="ad-title">商品標題</h4>
                     <p>電腦排盤軟體，快速準確分析命盤</p>
                     <div class="ad-meta">
                         <span class="ad-category">教育學習</span>
@@ -1584,3 +1584,38 @@ function getFortune() {
     <script src="../ads/ads.js"></script>
 </body>
 </html>
+
+<script>
+// 動態載入廣告標題和描述
+document.addEventListener('DOMContentLoaded', function() {
+    // 載入 ads.js
+    const script = document.createElement('script');
+    script.src = '../ads/ads.js';
+    script.onload = function() {
+        // 更新天機閣廣告
+        updateDestinyAds();
+    };
+    document.head.appendChild(script);
+});
+
+function updateDestinyAds() {
+    if (!window.destinyAds) return;
+    
+    // 更新廣告區塊標題
+    const titleEl = document.getElementById('destiny-ad-section-title');
+    const descEl = document.getElementById('destiny-ad-section-desc');
+    
+    if (titleEl) titleEl.textContent = '精選推薦商品';
+    if (descEl) descEl.textContent = '以下為精選商品，點擊圖片了解更多：';
+    
+    // 更新各個廣告卡片
+    const adTitles = document.querySelectorAll('.ad-title');
+    const adDescs = document.querySelectorAll('.ad-description');
+    
+    // 使用 destinyAds 中的資料
+    for (let i = 0; i < Math.min(adTitles.length, destinyAds.length); i++) {
+        adTitles[i].textContent = destinyAds[i].title;
+        adDescs[i].textContent = destinyAds[i].description;
+    }
+}
+</script>

@@ -47,73 +47,73 @@ const portalAds = [
 ];
 
 // ============================================================
-// 天機閣廣告（命理主題）
+// 天機閣廣告（使用現有推廣碼，標題匹配實際商品）
 // ============================================================
 const destinyAds = [
     {
-        id: 'destiny-book-1',
-        title: '紫微斗數入門經典',
-        description: '專業命理教學書籍，從基礎到進階完整教學',
-        category: '書籍雜誌',
-        service: '紫微斗數',
+        id: 'destiny-ad-1',
+        title: '佳瑪大罩杯內衣推薦',
+        description: '舒適透氣內衣，限時優惠中',
+        category: '服飾內衣',
+        service: '生活用品',
         image: 'https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=400&h=250&fit=crop',
         link: 'https://shoppingfun.co/3QW_R'
     },
     {
-        id: 'destiny-crystal-1',
-        title: '天然開運水晶手鍊',
-        description: '精選天然水晶，提升正能量與好運氣',
-        category: '其他類別',
-        service: '開運物品',
+        id: 'destiny-ad-2',
+        title: 'MyMall精選生活好物',
+        description: '各類優質商品，滿足日常需求',
+        category: '生活百貨',
+        service: '生活用品',
         image: 'https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?w=400&h=250&fit=crop',
         link: 'https://dreamstore.info/3QW_X'
     },
     {
-        id: 'destiny-course-1',
-        title: '八字命理線上課程',
-        description: '專業命理師親自教學，隨時隨地學習',
-        category: '教育學習',
-        service: '八字命理',
+        id: 'destiny-ad-3',
+        title: '熱門商品限時優惠',
+        description: '大家都在買的人氣商品',
+        category: '熱門推薦',
+        service: '生活用品',
         image: 'https://images.unsplash.com/photo-1516035069371-29a1b244cc32?w=400&h=250&fit=crop',
         link: 'https://www1.gamepark.com.tw/3QW_Y'
     },
     {
-        id: 'destiny-tool-1',
-        title: '專業命理排盤工具',
-        description: '電腦排盤軟體，快速準確分析命盤',
-        category: '教育學習',
-        service: '命理工具',
+        id: 'destiny-ad-4',
+        title: '精選商品推薦',
+        description: '優質商品，提升生活品質',
+        category: '精選推薦',
+        service: '生活用品',
         image: 'https://images.unsplash.com/photo-1589998059171-988d887df646?w=400&h=250&fit=crop',
         link: 'https://igrape.net/3QW_a'
     }
 ];
 
 // ============================================================
-// 運勢結果頁廣告（動態推薦）
+// 運勢結果頁廣告（使用現有推廣碼）
 // ============================================================
 const resultAds = [
     {
         id: 'result-ad-1',
-        title: '根據您的運勢推薦',
-        description: '開運水晶手鍊，提升今日好運氣',
+        title: '今日精選推薦',
+        description: '優質商品，提升生活品質',
         image: 'https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?w=400&h=200&fit=crop',
         buttonText: '立即查看',
         link: 'https://shoppingfun.co/3QW_R'
     },
     {
         id: 'result-ad-2',
-        title: '運勢相關商品',
-        description: '命理書籍，深入了解運勢原理',
+        title: '熱門商品推薦',
+        description: '大家都在買的人氣商品',
         image: 'https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=400&h=200&fit=crop',
         buttonText: '了解更多',
         link: 'https://dreamstore.info/3QW_X'
     },
     {
         id: 'result-ad-3',
-        title: '提升運勢推薦',
-        description: '線上課程，學習改善運勢方法',
+        title: '限時優惠商品',
+        description: '精選商品，限時優惠中',
         image: 'https://images.unsplash.com/photo-1516035069371-29a1b244cc32?w=400&h=200&fit=crop',
-        buttonText: '開始學習',
+        buttonText: '開始選購',
         link: 'https://www1.gamepark.com.tw/3QW_Y'
     }
 ];

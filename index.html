@@ -1,66 +1,467 @@
 <!DOCTYPE html>
-<html>
+<html lang="zh-TW">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>靈感匯聚 - 永久網址</title>
+    <title>靈感匯聚 - 多元服務入口</title>
+    <meta name="description" content="專業多元服務入口：命理占卜、AI影圖、星座運勢、心靈成長。永久網址，立即開始賺取佣金。">
     <style>
-        body { font-family: sans-serif; margin: 40px; }
-        h1 { color: #4ecdc4; }
-        .container { max-width: 800px; margin: 0 auto; }
-        .service { margin: 20px 0; padding: 20px; border: 1px solid #ddd; border-radius: 10px; }
-        .service h3 { margin-top: 0; }
-        .ad { background: #f5f5f5; padding: 15px; border-radius: 5px; margin: 10px 0; }
+        :root {
+            --primary: #1a1a2e;
+            --secondary: #16213e;
+            --accent: #4ecdc4;
+            --text-light: #ffffff;
+            --text-dark: #333333;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', 'Microsoft JhengHei', sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: var(--text-light);
+            line-height: 1.6;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 30px;
+            background: rgba(255,255,255,0.05);
+            border-radius: 20px;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        header {
+            text-align: center;
+            padding: 40px 0;
+            margin-bottom: 50px;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            background: linear-gradient(90deg, #4ecdc4, #06d6a0);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .subtitle {
+            font-size: 20px;
+            color: #aaa;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .highlight {
+            color: #ff6b6b;
+            font-weight: bold;
+        }
+        
+        .services {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+        
+        .service-card {
+            background: rgba(255,255,255,0.05);
+            border-radius: 15px;
+            padding: 30px;
+            border: 1px solid rgba(255,255,255,0.05);
+            transition: all 0.3s;
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-5px);
+            background: rgba(255,255,255,0.1);
+            border-color: rgba(255,255,255,0.2);
+        }
+        
+        .service-icon {
+            font-size: 40px;
+            margin-bottom: 20px;
+        }
+        
+        .service-card h3 {
+            font-size: 24px;
+            margin-bottom: 15px;
+            color: #4ecdc4;
+        }
+        
+        .service-card p {
+            color: #aaa;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+        
+        .service-features {
+            list-style: none;
+            margin-bottom: 25px;
+        }
+        
+        .service-features li {
+            padding: 8px 0;
+            color: #ccc;
+            position: relative;
+            padding-left: 25px;
+        }
+        
+        .service-features li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+        }
+        
+        .status {
+            display: inline-block;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+        
+        .status-active {
+            background: rgba(78, 205, 196, 0.2);
+            color: #4ecdc4;
+            border: 1px solid #4ecdc4;
+        }
+        
+        .status-coming {
+            background: rgba(255, 107, 107, 0.2);
+            color: #ff6b6b;
+            border: 1px solid #ff6b6b;
+        }
+        
+        .visit-button {
+            display: inline-block;
+            background: var(--accent);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+        
+        .visit-button:hover {
+            background: #06d6a0;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(6, 214, 160, 0.3);
+        }
+        
+        .ad-section {
+            background: rgba(255,255,255,0.05);
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 60px;
+            text-align: center;
+            border: 1px solid rgba(78, 205, 196, 0.2);
+        }
+        
+        .ad-section h2 {
+            font-size: 32px;
+            margin-bottom: 10px;
+            color: var(--accent);
+        }
+        
+        .ad-section p {
+            color: #aaa;
+            margin-bottom: 40px;
+            font-size: 18px;
+        }
+        
+        .ad-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        
+        .ad-card {
+            background: rgba(255,255,255,0.03);
+            border-radius: 15px;
+            padding: 20px;
+            text-align: center;
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+        
+        .ad-card h4 {
+            color: white;
+            margin-bottom: 10px;
+            font-size: 16px;
+        }
+        
+        .ad-card p {
+            color: #aaa;
+            font-size: 14px;
+            margin-bottom: 15px;
+        }
+        
+        .ad-button {
+            display: inline-block;
+            background: #ff6b6b;
+            color: white;
+            padding: 8px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-size: 14px;
+        }
+        
+        .ichannels-info {
+            background: rgba(255, 213, 102, 0.1);
+            border: 1px solid rgba(255, 213, 102, 0.3);
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 30px;
+            text-align: center;
+        }
+        
+        .ichannels-info h3 {
+            color: #ffd166;
+            margin-bottom: 10px;
+        }
+        
+        .member-id {
+            font-size: 24px;
+            font-weight: bold;
+            color: #ff6b6b;
+            margin: 10px 0;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            margin-top: 60px;
+            color: #aaa;
+        }
+        
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .footer-links a {
+            color: #aaa;
+            text-decoration: none;
+        }
+        
+        .footer-links a:hover {
+            color: white;
+        }
+        
+        .copyright {
+            font-size: 14px;
+            color: #666;
+            margin-top: 40px;
+            padding-top: 40px;
+            border-top: 1px solid rgba(255,255,255,0.05);
+        }
+        
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 36px;
+            }
+            
+            .subtitle {
+                font-size: 16px;
+            }
+            
+            .services {
+                grid-template-columns: 1fr;
+            }
+            
+            .ad-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-links {
+                flex-direction: column;
+                gap: 15px;
+            }
+        }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>🚀 靈感匯聚多元服務平台</h1>
-        <p>永久網址：https://lobsterbisqueshih-glitch.github.io/lobsterbisque/</p>
+        <header>
+            <h1>🚀 靈感匯聚多元服務平台</h1>
+            <p class="subtitle">
+                永久網址：<span class="highlight">https://lobsterbisqueshih-glitch.github.io/lobsterbisque/</span>
+            </p>
+            <p class="subtitle">
+                五大專業服務，各具特色，滿足您的多元需求。立即開始賺取廣告佣金！
+            </p>
+        </header>
         
-        <div class="service">
-            <h3>🔮 天機閣 - 專業命理服務</h3>
-            <p>紫微斗數、八字命理、姓名學分析、手相面相解讀。</p>
-            <a href="destiny/">前往天機閣</a>
-        </div>
+        <section class="services">
+            <!-- 天機閣 -->
+            <a href="destiny/" class="service-card">
+                <div class="service-icon">🔮</div>
+                <div class="status status-active">✅ 已上線</div>
+                <h3>天機閣</h3>
+                <p>專業命理服務：紫微斗數、八字命理、姓名學分析。結合傳統智慧與現代解讀。</p>
+                <ul class="service-features">
+                    <li>紫微斗數命盤分析</li>
+                    <li>八字流年運勢</li>
+                    <li>姓名學與改名建議</li>
+                    <li>手相面相解讀</li>
+                </ul>
+                <div class="visit-button">前往天機閣</div>
+            </a>
+            
+            <!-- 變臉坊 -->
+            <div class="service-card">
+                <div class="service-icon">🎭</div>
+                <div class="status status-coming">🚧 準備中</div>
+                <h3>變臉坊</h3>
+                <p>AI影像處理與創意變臉服務。使用最新AI技術，實現照片換臉、影片特效。</p>
+                <ul class="service-features">
+                    <li>AI照片換臉技術</li>
+                    <li>影片角色替換</li>
+                    <li>創意影像生成</li>
+                    <li>個性化特效製作</li>
+                </ul>
+                <div class="visit-button" style="background: #666; cursor: not-allowed;">即將上線</div>
+            </div>
+            
+            <!-- 塔羅堂 -->
+            <div class="service-card">
+                <div class="service-icon">🃏</div>
+                <div class="status status-coming">🚧 準備中</div>
+                <h3>塔羅堂</h3>
+                <p>專業塔羅占卜與心靈諮詢。透過塔羅牌陣解讀，提供感情、事業、人生指引。</p>
+                <ul class="service-features">
+                    <li>專業塔羅牌陣解讀</li>
+                    <li>感情事業諮詢</li>
+                    <li>未來趨勢分析</li>
+                    <li>心靈成長指引</li>
+                </ul>
+                <div class="visit-button" style="background: #666; cursor: not-allowed;">即將上線</div>
+            </div>
+            
+            <!-- 星象館 -->
+            <div class="service-card">
+                <div class="service-icon">⭐</div>
+                <div class="status status-coming">🚧 準備中</div>
+                <h3>星象館</h3>
+                <p>星座運勢與星象分析。每日、每週、每月星座運勢，結合天文星象專業解讀。</p>
+                <ul class="service-features">
+                    <li>每日星座運勢</li>
+                    <li>星象相位分析</li>
+                    <li>行星運行解讀</li>
+                    <li>個人星盤製作</li>
+                </ul>
+                <div class="visit-button" style="background: #666; cursor: not-allowed;">即將上線</div>
+            </div>
+            
+            <!-- 心靈角落 -->
+            <div class="service-card">
+                <div class="service-icon">🧘</div>
+                <div class="status status-coming">🚧 準備中</div>
+                <h3>心靈角落</h3>
+                <p>心靈成長與冥想指導。提供冥想練習、壓力管理、情緒調節與心靈成長課程。</p>
+                <ul class="service-features">
+                    <li>冥想引導與練習</li>
+                    <li>壓力管理技巧</li>
+                    <li>情緒調節方法</li>
+                    <li>心靈成長課程</li>
+                </ul>
+                <div class="visit-button" style="background: #666; cursor: not-allowed;">即將上線</div>
+            </div>
+        </section>
         
-        <div class="service">
-            <h3>🎭 變臉坊 - AI影像處理</h3>
-            <p>AI照片換臉、影片角色替換、創意影像生成。</p>
-            <p style="color: #666;">🚧 準備中</p>
-        </div>
+        <!-- 廣告區域 -->
+        <section class="ad-section">
+            <h2>📊 iChannels 廣告系統</h2>
+            <p>點擊廣告即可開始賺取佣金，所有廣告均透過iChannels通路王追蹤。</p>
+            
+            <div class="ichannels-info">
+                <h3>您的專屬會員ID</h3>
+                <div class="member-id">3QWtn</div>
+                <p>此ID已整合到所有廣告連結，點擊廣告即可開始累積佣金。</p>
+                <p style="color: #ffd166; margin-top: 15px;">
+                    💰 佣金計算：根據商品類別，佣金比例 5-15%
+                </p>
+            </div>
+            
+            <div class="ad-grid">
+                <div class="ad-card">
+                    <h4>命理書籍推薦</h4>
+                    <p>專業命理教學書籍，從基礎到進階完整教學</p>
+                    <a href="#" class="ad-button" onclick="trackAd('destiny-book')">查看詳情</a>
+                </div>
+                
+                <div class="ad-card">
+                    <h4>開運水晶手鍊</h4>
+                    <p>精選天然水晶，提升正能量與好運氣</p>
+                    <a href="#" class="ad-button" onclick="trackAd('destiny-crystal')">查看詳情</a>
+                </div>
+                
+                <div class="ad-card">
+                    <h4>線上命理課程</h4>
+                    <p>專業命理師親自教學，隨時隨地學習</p>
+                    <a href="#" class="ad-button" onclick="trackAd('destiny-course')">查看詳情</a>
+                </div>
+                
+                <div class="ad-card">
+                    <h4>命理排盤工具</h4>
+                    <p>電腦排盤軟體，快速準確分析命盤</p>
+                    <a href="#" class="ad-button" onclick="trackAd('destiny-tool')">查看詳情</a>
+                </div>
+            </div>
+        </section>
         
-        <div class="service">
-            <h3>🃏 塔羅堂 - 塔羅占卜</h3>
-            <p>專業塔羅牌陣解讀、感情事業諮詢。</p>
-            <p style="color: #666;">🚧 準備中</p>
-        </div>
-        
-        <div class="service">
-            <h3>⭐ 星象館 - 星座運勢</h3>
-            <p>每日星座運勢、星象相位分析、個人星盤製作。</p>
-            <p style="color: #666;">🚧 準備中</p>
-        </div>
-        
-        <div class="service">
-            <h3>🧘 心靈角落 - 心靈成長</h3>
-            <p>冥想引導、壓力管理、情緒調節、心靈成長課程。</p>
-            <p style="color: #666;">🚧 準備中</p>
-        </div>
-        
-        <div class="ad">
-            <h4>📊 iChannels 廣告系統</h4>
-            <p>會員ID: <strong>3QWtn</strong></p>
-            <p>廣告追蹤：已啟用</p>
-            <p>佣金計算：點擊廣告即可開始賺取</p>
-        </div>
-        
-        <div style="margin-top: 40px; padding-top: 20px; border-top: 1px solid #ddd;">
-            <p>© 2026 靈感匯聚多元服務平台</p>
-            <p>網站開發：龍蝦粥技術團隊 | 廣告合作：iChannels 通路王</p>
-        </div>
+        <footer>
+            <div class="footer-links">
+                <a href="#services">服務項目</a>
+                <a href="#ads">推薦商品</a>
+                <a href="#about">關於我們</a>
+                <a href="#contact">聯絡我們</a>
+            </div>
+            
+            <div class="copyright">
+                <p>© 2026 靈感匯聚多元服務平台。永久網址：https://lobsterbisqueshih-glitch.github.io/lobsterbisque/</p>
+                <p style="margin-top: 10px;">
+                    廣告聲明：本平台包含聯盟行銷廣告連結，點擊連結購買商品可能會獲得佣金。
+                </p>
+                <p style="margin-top: 10px; font-size: 12px;">
+                    網站開發：龍蝦粥技術團隊 | 廣告合作：iChannels 通路王
+                </p>
+            </div>
+        </footer>
     </div>
     
-    <script src="ichannels-tracker.js"></script>
+    <script>
+        // 簡單的廣告追蹤
+        function trackAd(adId) {
+            console.log('廣告點擊追蹤:', adId);
+            alert('廣告功能準備中，即將導向商品頁面\n會員ID: 3QWtn');
+            return false;
+        }
+        
+        // 頁面載入完成
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('靈感匯聚入口網站載入完成');
+            console.log('永久網址: https://lobsterbisqueshih-glitch.github.io/lobsterbisque/');
+            console.log('iChannels 會員ID: 3QWtn');
+        });
+    </script>
 </body>
 </html>

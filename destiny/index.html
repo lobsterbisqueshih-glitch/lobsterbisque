@@ -1,0 +1,689 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>天機閣 - 專業命理服務</title>
+    <meta name="description" content="專業命理服務：紫微斗數、八字命理、姓名學分析、手相面相解讀。永久網址，立即開始賺取佣金。">
+    <style>
+        :root {
+            --primary: #2d1b3d;
+            --secondary: #1a1a2e;
+            --accent: #ff6b6b;
+            --accent-secondary: #ff8e53;
+            --text-light: #ffffff;
+            --text-dark: #333333;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', 'Microsoft JhengHei', sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: var(--text-light);
+            line-height: 1.6;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 30px;
+            background: rgba(255,255,255,0.05);
+            border-radius: 20px;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        header {
+            text-align: center;
+            padding: 40px 0;
+            margin-bottom: 50px;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            background: linear-gradient(90deg, #ff6b6b, #ff8e53);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .subtitle {
+            font-size: 20px;
+            color: #ffd166;
+            max-width: 800px;
+            margin: 0 auto 30px;
+        }
+        
+        .back-link {
+            display: inline-block;
+            color: #4ecdc4;
+            text-decoration: none;
+            margin-top: 20px;
+            padding: 10px 20px;
+            border: 1px solid #4ecdc4;
+            border-radius: 5px;
+            transition: all 0.3s;
+        }
+        
+        .back-link:hover {
+            background: #4ecdc4;
+            color: white;
+        }
+        
+        .services {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+        
+        .service-card {
+            background: rgba(255,255,255,0.05);
+            border-radius: 15px;
+            padding: 30px;
+            border-left: 5px solid var(--accent);
+            transition: all 0.3s;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-5px);
+            background: rgba(255,255,255,0.1);
+            box-shadow: 0 10px 20px rgba(255,107,107,0.2);
+        }
+        
+        .service-icon {
+            font-size: 40px;
+            margin-bottom: 20px;
+            color: var(--accent);
+        }
+        
+        .service-card h3 {
+            font-size: 24px;
+            margin-bottom: 15px;
+            color: #ffd166;
+        }
+        
+        .service-card p {
+            color: #aaa;
+            margin-bottom: 25px;
+            line-height: 1.7;
+        }
+        
+        .service-features {
+            list-style: none;
+            margin-bottom: 25px;
+        }
+        
+        .service-features li {
+            padding: 8px 0;
+            color: #ccc;
+            position: relative;
+            padding-left: 25px;
+        }
+        
+        .service-features li::before {
+            content: '✦';
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+        }
+        
+        .service-button {
+            display: inline-block;
+            background: var(--accent);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+        
+        .service-button:hover {
+            background: #ff8e53;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(255,107,107,0.3);
+        }
+        
+        .fortune-section {
+            background: rgba(255,255,255,0.05);
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 60px;
+            border: 1px solid rgba(255,213,102,0.2);
+        }
+        
+        .fortune-section h2 {
+            font-size: 32px;
+            margin-bottom: 20px;
+            color: #ffd166;
+            text-align: center;
+        }
+        
+        .fortune-form {
+            max-width: 500px;
+            margin: 0 auto;
+            background: rgba(255,255,255,0.03);
+            padding: 30px;
+            border-radius: 15px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #ffd166;
+        }
+        
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 12px;
+            border-radius: 8px;
+            border: 1px solid rgba(255,107,107,0.3);
+            background: rgba(255,255,255,0.05);
+            color: white;
+            font-size: 16px;
+        }
+        
+        .form-group input:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--accent);
+        }
+        
+        .submit-button {
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(90deg, #ff6b6b, #ff8e53);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .submit-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(255,107,107,0.3);
+        }
+        
+        .ad-section {
+            background: rgba(255,255,255,0.05);
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 60px;
+            text-align: center;
+            border: 1px solid rgba(255,107,107,0.2);
+        }
+        
+        .ad-section h2 {
+            font-size: 32px;
+            margin-bottom: 10px;
+            color: var(--accent);
+        }
+        
+        .ad-section p {
+            color: #ffd166;
+            margin-bottom: 40px;
+            font-size: 18px;
+        }
+        
+        .ad-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
+        
+        .ad-card {
+            background: rgba(255,255,255,0.03);
+            border-radius: 15px;
+            padding: 25px;
+            text-align: center;
+            border: 1px solid rgba(255,107,107,0.1);
+            transition: all 0.3s;
+        }
+        
+        .ad-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent);
+            box-shadow: 0 10px 20px rgba(255,107,107,0.2);
+        }
+        
+        .ad-card h4 {
+            color: white;
+            margin-bottom: 10px;
+            font-size: 18px;
+        }
+        
+        .ad-card p {
+            color: #aaa;
+            font-size: 14px;
+            margin-bottom: 15px;
+            min-height: 40px;
+        }
+        
+        .ad-meta {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+            font-size: 12px;
+        }
+        
+        .ad-category {
+            color: var(--accent);
+            background: rgba(255,107,107,0.1);
+            padding: 4px 8px;
+            border-radius: 4px;
+        }
+        
+        .ad-price {
+            color: #ffd166;
+            font-weight: bold;
+        }
+        
+        .ad-commission {
+            margin-bottom: 20px;
+        }
+        
+        .commission-badge {
+            background: rgba(255,107,107,0.2);
+            color: var(--accent);
+            padding: 6px 12px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+        
+        .ad-button {
+            display: block;
+            text-align: center;
+            background: linear-gradient(90deg, #ff6b6b, #ff8e53);
+            color: white;
+            padding: 12px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+        
+        .ad-button:hover {
+            background: linear-gradient(90deg, #ff8e53, #ff6b6b);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255,107,107,0.3);
+        }
+        
+        .ichannels-info {
+            background: rgba(255, 213, 102, 0.1);
+            border: 1px solid rgba(255, 213, 102, 0.3);
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 30px;
+            text-align: center;
+        }
+        
+        .ichannels-info h3 {
+            color: #ffd166;
+            margin-bottom: 10px;
+        }
+        
+        .member-id {
+            font-size: 24px;
+            font-weight: bold;
+            color: #ff6b6b;
+            margin: 10px 0;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            margin-top: 60px;
+            color: #aaa;
+        }
+        
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .footer-links a {
+            color: #aaa;
+            text-decoration: none;
+        }
+        
+        .footer-links a:hover {
+            color: #ffd166;
+        }
+        
+        .copyright {
+            font-size: 14px;
+            color: #666;
+            margin-top: 40px;
+            padding-top: 40px;
+            border-top: 1px solid rgba(255,255,255,0.05);
+        }
+        
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 36px;
+            }
+            
+            .subtitle {
+                font-size: 16px;
+            }
+            
+            .services {
+                grid-template-columns: 1fr;
+            }
+            
+            .ad-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-links {
+                flex-direction: column;
+                gap: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🔮 天機閣 - 專業命理服務</h1>
+            <p class="subtitle">永久網址：https://lobsterbisqueshih-glitch.github.io/lobsterbisque/destiny/</p>
+            <p class="subtitle">專業命理服務，結合千年智慧與現代解讀。紫微斗數、八字命理、姓名學分析，為您指引人生方向。</p>
+            <a href="../" class="back-link">← 返回入口網站</a>
+        </header>
+        
+        <section class="services">
+            <div class="service-card">
+                <div class="service-icon">♈️</div>
+                <h3>紫微斗數命盤</h3>
+                <p>專業紫微斗數排盤，分析命盤格局、大運流年，深入解讀人生軌跡與發展方向。</p>
+                <ul class="service-features">
+                    <li>完整命盤製作</li>
+                    <li>十二宮位分析</li>
+                    <li>大運流年推算</li>
+                    <li>專業命理師解讀</li>
+                </ul>
+                <a href="#consult" class="service-button">預約諮詢</a>
+            </div>
+            
+            <div class="service-card">
+                <div class="service-icon">🔢</div>
+                <h3>八字命理分析</h3>
+                <p>八字四柱排盤，分析五行生剋、十神格局，預測流年運勢與人生發展趨勢。</p>
+                <ul class="service-features">
+                    <li>八字四柱排盤</li>
+                    <li>五行生剋分析</li>
+                    <li>十神格局解讀</li>
+                    <li>流年運勢預測</li>
+                </ul>
+                <a href="#consult" class="service-button">預約諮詢</a>
+            </div>
+            
+            <div class="service-card">
+                <div class="service-icon">✍️</div>
+                <h3>姓名學分析</h3>
+                <p>姓名筆劃分析，結合八字五行，為您提供改名建議與命名服務，改善運勢。</p>
+                <ul class="service-features">
+                    <li>姓名筆劃分析</li>
+                    <li>五行八字配合</li>
+                    <li>改名建議服務</li>
+                    <li>命名方案提供</li>
+                </ul>
+                <a href="#consult" class="service-button">預約諮詢</a>
+            </div>
+            
+            <div class="service-card">
+                <div class="service-icon">🖐️</div>
+                <h3>手相面相解讀</h3>
+                <p>透過手相紋路與面相特徵分析性格特質、事業發展、感情婚姻與健康狀況。</p>
+                <ul class="service-features">
+                    <li>手相紋路分析</li>
+                    <li>面相特徵解讀</li>
+                    <li>性格特質分析</li>
+                    <li>健康狀況評估</li>
+                </ul>
+                <a href="#consult" class="service-button">預約諮詢</a>
+            </div>
+        </section>
+        
+        <section class="fortune-section">
+            <h2>今日運勢查詢</h2>
+            <div class="fortune-form">
+                <div class="form-group">
+                    <label for="birth-date">出生年月日</label>
+                    <input type="date" id="birth-date" name="birth-date" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="question-type">想詢問的事項</label>
+                    <select id="question-type" name="question-type">
+                        <option value="general">綜合運勢</option>
+                        <option value="career">事業工作</option>
+                        <option value="love">感情婚姻</option>
+                        <option value="wealth">財運投資</option>
+                        <option value="health">健康狀況</option>
+                    </select>
+                </div>
+                
+                <button type="submit" class="submit-button" onclick="getFortune()">
+                    🔮 獲取今日運勢
+                </button>
+                
+                <div id="fortune-result" style="margin-top: 30px; display: none;">
+                    <div style="background: rgba(255,213,102,0.1); padding: 20px; border-radius: 10px; border: 1px solid rgba(255,213,102,0.3);">
+                        <h3 style="color: #ffd166; margin-bottom: 15px;">您的今日運勢</h3>
+                        <div id="fortune-content"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section class="ad-section">
+            <h2>命理開運推薦</h2>
+            <p>以下為命理相關推薦商品，點擊了解詳情：</p>
+            
+            <div class="ad-grid">
+                <div class="ad-card">
+                    <h4>紫微斗數入門經典</h4>
+                    <p>專業命理教學書籍，從基礎到進階完整教學</p>
+                    <div class="ad-meta">
+                        <span class="ad-category">書籍雜誌</span>
+                        <span class="ad-price">NT$ 450</span>
+                    </div>
+                    <div class="ad-commission">
+                        <span class="commission-badge">佣金 8%</span>
+                    </div>
+                    <a href="#" class="ad-button" onclick="trackAd('destiny-book-1')">🔗 查看詳情</a>
+                </div>
+                
+                <div class="ad-card">
+                    <h4>天然開運水晶手鍊</h4>
+                    <p>精選天然水晶，提升正能量與好運氣</p>
+                    <div class="ad-meta">
+                        <span class="ad-category">其他類別</span>
+                        <span class="ad-price">NT$ 1,280</span>
+                    </div>
+                    <div class="ad-commission">
+                        <span class="commission-badge">佣金 12%</span>
+                    </div>
+                    <a href="#" class="ad-button" onclick="trackAd('destiny-crystal-1')">🔗 查看詳情</a>
+                </div>
+                
+                <div class="ad-card">
+                    <h4>八字命理線上課程</h4>
+                    <p>專業命理師親自教學，隨時隨地學習</p>
+                    <div class="ad-meta">
+                        <span class="ad-category">教育學習</span>
+                        <span class="ad-price">NT$ 2,800</span>
+                    </div>
+                    <div class="ad-commission">
+                        <span class="commission-badge">佣金 15%</span>
+                    </div>
+                    <a href="#" class="ad-button" onclick="trackAd('destiny-course-1')">🔗 查看詳情</a>
+                </div>
+                
+                <div class="ad-card">
+                    <h4>專業命理排盤工具</h4>
+                    <p>電腦排盤軟體，快速準確分析命盤</p>
+                    <div class="ad-meta">
+                        <span class="ad-category">教育學習</span>
+                        <span class="ad-price">NT$ 1,980</span>
+                    </div>
+                    <div class="ad-commission">
+                        <span class="commission-badge">佣金 10%</span>
+                    </div>
+                    <a href="#" class="ad-button" onclick="trackAd('destiny-tool-1')">🔗 查看詳情</a>
+                </div>
+            </div>
+            
+            <div class="ichannels-info">
+                <h3>iChannels 廣告追蹤系統</h3>
+                <p>您的專屬會員ID：</p>
+                <div class="member-id">3QWtn</div>
+                <p>點擊上方廣告即可開始賺取佣金，所有點擊均透過iChannels通路王追蹤。</p>
+                <p style="color: #ffd166; margin-top: 15px;">
+                    💰 佣金即時計算，每月結算付款
+                </p>
+            </div>
+        </section>
+        
+        <footer>
+            <div class="footer-links">
+                <a href="#services">服務項目</a>
+                <a href="#fortune">今日運勢</a>
+                <a href="#ads">推薦商品</a>
+                <a href="#about">關於我們</a>
+                <a href="../">返回入口網站</a>
+            </div>
+            
+            <div class="copyright">
+                <p>© 2026 天機閣專業命理服務。永久網址：https://lobsterbisqueshih-glitch.github.io/lobsterbisque/destiny/</p>
+                <p style="margin-top: 10px;">
+                    廣告聲明：本網站包含聯盟行銷廣告連結，當您點擊連結並購買商品時，我們可能會獲得佣金。
+                </p>
+                <p style="margin-top: 10px; font-size: 12px;">
+                    網站開發：龍蝦粥技術團隊 | 廣告合作：iChannels 通路王
+                </p>
+            </div>
+        </footer>
+    </div>
+    
+    <script>
+        // 運勢查詢功能
+        function getFortune() {
+            const birthDate = document.getElementById('birth-date').value;
+            const questionType = document.getElementById('question-type').value;
+            
+            if (!birthDate) {
+                alert('請輸入出生年月日');
+                return;
+            }
+            
+            // 模擬運勢結果
+            const fortunes = {
+                general: {
+                    title: '綜合運勢',
+                    content: '今日整體運勢平穩，適合規劃未來。事業上有新機會出現，感情方面需多溝通。財運方面建議保守投資，健康狀況良好。',
+                    luckyColor: '紅色',
+                    luckyNumber: 7
+                },
+                career: {
+                    title: '事業工作運勢',
+                    content: '工作上可能會有新的挑戰出現，這是展現能力的機會。與同事合作順暢，上司對你的表現有所期待。適合學習新技能提升競爭力。',
+                    luckyColor: '藍色',
+                    luckyNumber: 3
+                },
+                love: {
+                    title: '感情婚姻運勢',
+                    content: '單身者可能有新的邂逅機會，多參加社交活動。有伴侶者需要多溝通，避免誤會產生。感情需要用心經營與維護。',
+                    luckyColor: '粉色',
+                    luckyNumber: 9
+                },
+                wealth: {
+                    title: '財運投資運勢',
+                    content: '財運平穩，不宜進行大額投資。可以考慮小額理財或儲蓄計劃。注意開支控制，避免衝動消費。',
+                    luckyColor: '金色',
+                    luckyNumber: 5
+                },
+                health: {
+                    title: '健康狀況運勢',
+                    content: '健康狀況良好，但需注意休息與飲食均衡。適當運動有助於維持體能。注意壓力管理，避免過度勞累。',
+                    luckyColor: '綠色',
+                    luckyNumber: 2
+                }
+            };
+            
+            const fortune = fortunes[questionType] || fortunes.general;
+            
+            document.getElementById('fortune-content').innerHTML = `
+                <p><strong>${fortune.title}</strong></p>
+                <p>${fortune.content}</p>
+                <div style="margin-top: 15px;">
+                    <span style="color: #ffd166;">幸運色：${fortune.luckyColor}</span> | 
+                    <span style="color: #ffd166;">幸運數字：${fortune.luckyNumber}</span>
+                </div>
+                <p style="margin-top: 15px; font-style: italic; color: #aaa;">
+                    以上分析僅供參考，實際運勢取決於個人努力與選擇。
+                </p>
+            `;
+            
+            document.getElementById('fortune-result').style.display = 'block';
+            
+            // 滾動到結果
+            document.getElementById('fortune-result').scrollIntoView({ behavior: 'smooth' });
+        }
+        
+        // 廣告點擊追蹤
+        function trackAd(adId) {
+            console.log(`天機閣廣告點擊追蹤: ${adId}`);
+            console.log(`iChannels 會員ID: 3QWtn`);
+            
+            alert(`廣告追蹤: ${adId}\n會員ID: 3QWtn\n即將導向商品頁面...`);
+            
+            // 模擬iChannels追蹤
+            const trackData = {
+                adId: adId,
+                service: 'destiny',
+                memberId: '3QWtn',
+                timestamp: new Date().toISOString(),
+                pageUrl: window.location.href
+            };
+            
+            console.log('追蹤資料:', trackData);
+            
+            return true;
+        }
+        
+        // 頁面載入完成
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('天機閣網站載入完成');
+            console.log('永久網址: https://lobsterbisqueshih-glitch.github.io/lobsterbisque/destiny/');
+            console.log('iChannels 會員ID: 3QWtn');
+            
+            // 設定今天為預設日期
+            const today = new Date().toISOString().split('T')[0];
+            document.getElementById('birth-date').value = today;
+        });
+    </script>
+</body>
+</html>

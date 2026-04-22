@@ -1,191 +1,45 @@
 <!DOCTYPE html>
 <html lang="zh-TW">
 <head>
-    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
-    <meta http-equiv="Pragma" content="no-cache">
-    <meta http-equiv="Expires" content="0">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>天機閣 - 專業命理服務</title>
-    <meta name="description" content="專業命理服務：今日運勢查詢、紫微斗數、八字命理、姓名學分析、靈籤堂抽籤。">
+    <meta name="description" content="專業命理服務">
     <style>
-        :root {
-            --primary: #2d1b3d;
-            --secondary: #1a1a2e;
-            --accent: #ff6b6b;
-            --accent-secondary: #ff8e53;
-            --text-light: #ffffff;
-            --text-dark: #333333;
-        }
-        
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', 'Microsoft JhengHei', sans-serif;
-        }
-        
-        body {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
-            color: var(--text-light);
-            min-height: 100vh;
-            padding: 20px;
-        }
-        
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-        
-        /* 廣告卡片樣式 */
-        .ad-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
-            margin: 30px 0;
-        }
-        
-        .ad-card {
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 10px;
-            overflow: hidden;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        
-        .ad-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
-        }
-        
-        .ad-image {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-        }
-        
-        .ad-content {
-            padding: 20px;
-        }
-        
-        .ad-content h4 {
-            font-size: 1.2rem;
-            margin-bottom: 10px;
-            color: var(--text-light);
-        }
-        
-        .ad-content p {
-            font-size: 0.9rem;
-            opacity: 0.8;
-            margin-bottom: 15px;
-            line-height: 1.5;
-        }
-        
-        .ad-link {
-            display: inline-block;
-            padding: 8px 16px;
-            background: var(--accent);
-            color: white;
-            text-decoration: none;
-            border-radius: 5px;
-            font-weight: bold;
-            transition: background 0.3s ease;
-        }
-        
-        .ad-link:hover {
-            background: var(--accent-secondary);
-        }
-        
-        /* 標題區域 */
-        .header {
-            text-align: center;
-            padding: 40px 0;
-        }
-        
-        .header h1 {
-            font-size: 2.5rem;
-            margin-bottom: 10px;
-            background: linear-gradient(90deg, var(--accent), var(--accent-secondary));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-        
-        .header p {
-            font-size: 1.1rem;
-            opacity: 0.9;
-            max-width: 600px;
-            margin: 0 auto;
-        }
-        
-        /* 廣告區標題 */
-        .ad-section {
-            margin: 40px 0;
-        }
-        
-        .ad-section h2 {
-            font-size: 1.8rem;
-            margin-bottom: 10px;
-            text-align: center;
-        }
-        
-        .ad-section p {
-            text-align: center;
-            opacity: 0.8;
-            margin-bottom: 20px;
-        }
-        
-        /* 響應式設計 */
-        @media (max-width: 768px) {
-            .ad-container {
-                grid-template-columns: 1fr;
-            }
-            
-            .header h1 {
-                font-size: 2rem;
-            }
-        }
+        body { background: #2d1b3d; color: white; padding: 20px; font-family: sans-serif; }
+        .container { max-width: 1200px; margin: 0 auto; }
+        .ad-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; margin: 30px 0; }
+        .ad-card { background: rgba(255,255,255,0.1); padding: 20px; border-radius: 10px; }
+        .ad-card img { width: 100%; height: 200px; object-fit: cover; border-radius: 5px; }
     </style>
 </head>
 <body>
     <div class="container">
-        <!-- 標題區域 -->
-        <div class="header">
-            <h1>🔮 天機閣 - 專業命理服務</h1>
-            <p>專業命理服務：今日運勢查詢、紫微斗數、八字命理、姓名學分析、靈籤堂抽籤。</p>
-        </div>
+        <h1>天機閣</h1>
+        <p>專業命理服務</p>
         
-        <!-- 廣告區域 - 完全空容器 -->
-        <div class="ad-section">
-            <h2 id="ad-section-title">精選推薦</h2>
-            <p id="ad-section-desc">以下為精選商品，點擊圖片了解更多：</p>
-            
-            <div class="ad-container" id="destiny-ad-container">
-                <!-- 廣告卡片會由 JavaScript 動態生成 -->
-                <!-- 完全沒有預設內容 -->
-            </div>
-        </div>
-        
-        <!-- 其他內容區域 -->
-        <div class="ad-section">
-            <h2>運勢結果推薦</h2>
-            <p>根據您的運勢結果，為您推薦相關商品：</p>
-            
-            <div class="ad-container" id="result-ad-container">
-                <!-- 結果廣告也會動態生成 -->
-            </div>
+        <div class="ad-container" id="destiny-ad-container">
+            <!-- 廣告由 JavaScript 動態生成 -->
         </div>
     </div>
     
-    <!-- 載入廣告系統 -->
-    <script src="ads/ads.js?v=1776870136"></script>
-    <script src="ads/ad-loader.js?v=1776870136"></script>
-    
+    <script src="ads/ads.js"></script>
     <script>
-        // 簡單初始化
+        // 簡單的廣告載入
         document.addEventListener('DOMContentLoaded', function() {
-            if (window.adLoader) {
-                window.adLoader.init();
+            if (window.destinyAds && window.destinyAds.length > 0) {
+                const container = document.getElementById('destiny-ad-container');
+                window.destinyAds.forEach(ad => {
+                    const card = document.createElement('div');
+                    card.className = 'ad-card';
+                    card.innerHTML = `
+                        <img src="${ad.image}" alt="${ad.title}">
+                        <h3>${ad.title}</h3>
+                        <p>${ad.description}</p>
+                        <a href="${ad.link}" target="_blank">了解更多</a>
+                    `;
+                    container.appendChild(card);
+                });
             }
         });
     </script>

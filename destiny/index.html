@@ -942,6 +942,93 @@
                 showMiniAd();
             }, 5000);
         });
-    </script>
+<script>
+// 修復廣告pop up問題
+console.log('廣告系統初始化...');
+
+// 確保函數存在
+if (typeof showServiceAd === 'undefined') {
+    console.error('showServiceAd函數未定義！');
+    // 重新定義函數
+    window.showServiceAd = function(serviceName, adDescription) {
+        console.log('showServiceAd被呼叫:', serviceName);
+        
+        // 簡單的廣告資料
+        const ads = [
+            {
+                id: 'test-ad-1',
+                title: '測試廣告 - ' + serviceName,
+                description: adDescription,
+                category: '測試類別',
+                price: 'NT$ 999',
+                service: serviceName
+            }
+        ];
+        
+        const ad = ads[0];
+        
+        // 更新廣告內容
+        const titleEl = document.getElementById('popupAdTitle');
+        const descEl = document.getElementById('popupAdDesc');
+        const categoryEl = document.getElementById('popupAdCategory');
+        const priceEl = document.getElementById('popupAdPrice');
+        
+        if (titleEl) titleEl.textContent = ad.title;
+        if (descEl) descEl.textContent = ad.description;
+        if (categoryEl) categoryEl.textContent = ad.category;
+        if (priceEl) priceEl.textContent = ad.price;
+        
+        // 儲存當前廣告ID
+        window.currentAdId = ad.id;
+        
+        // 顯示跳出廣告
+        const overlay = document.getElementById('overlay');
+        const popupAd = document.getElementById('popupAd');
+        
+        if (overlay && popupAd) {
+            overlay.classList.add('active');
+            popupAd.classList.add('active');
+            console.log('廣告pop up顯示成功');
+        } else {
+            console.error('找不到廣告元素！');
+            alert('測試廣告：' + serviceName + '\n' + adDescription);
+        }
+    };
+    
+    console.log('已重新定義showServiceAd函數');
+}
+
+// 測試按鈕
+function testAdPopup() {
+    console.log('測試廣告pop up...');
+    showServiceAd('測試服務', '測試廣告描述');
+}
+
+// 頁面載入完成後添加測試按鈕
+document.addEventListener('DOMContentLoaded', function() {
+    console.log('DOM載入完成，添加測試按鈕');
+    
+    // 在服務區域添加測試按鈕
+    const servicesSection = document.querySelector('.services');
+    if (servicesSection) {
+        const testButton = document.createElement('button');
+        testButton.textContent = '🔧 測試廣告pop up';
+        testButton.style.cssText = `
+            display: block;
+            margin: 20px auto;
+            padding: 10px 20px;
+            background: #ff6b6b;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+        `;
+        testButton.onclick = testAdPopup;
+        servicesSection.appendChild(testButton);
+    }
+    
+    console.log('廣告系統準備完成');
+});</script>
 </body>
 </html>

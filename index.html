@@ -867,6 +867,250 @@
                 }
             }, { passive: false });
         }
-    </script>
+<script>
+// 為入口網站添加廣告pop up功能
+
+// 廣告pop up樣式
+const popupStyle = `
+    <style>
+        .portal-popup-ad {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0.9);
+            background: rgba(26, 26, 46, 0.95);
+            border: 2px solid #4ecdc4;
+            border-radius: 15px;
+            padding: 30px;
+            width: 90%;
+            max-width: 400px;
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+        }
+        
+        .portal-popup-ad.active {
+            opacity: 1;
+            visibility: visible;
+            transform: translate(-50%, -50%) scale(1);
+        }
+        
+        .portal-popup-ad h3 {
+            color: #ffd166;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+        
+        .portal-popup-ad .ad-content {
+            background: rgba(255,255,255,0.05);
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
+        .portal-popup-ad .close-btn {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: none;
+            border: none;
+            color: #aaa;
+            font-size: 24px;
+            cursor: pointer;
+        }
+        
+        .portal-popup-ad .popup-button {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            background: linear-gradient(90deg, #4ecdc4, #06d6a0);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .portal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.7);
+            z-index: 999;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s;
+        }
+        
+        .portal-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        @media (max-width: 768px) {
+            .portal-popup-ad {
+                width: 95%;
+                padding: 20px;
+            }
+        }
+    </style>
+`;
+
+// 廣告pop up HTML結構
+const popupHTML = `
+    <div class="portal-overlay" id="portalOverlay"></div>
+    <div class="portal-popup-ad" id="portalPopupAd">
+        <button class="close-btn" onclick="closePortalPopupAd()">×</button>
+        <h3>推薦商品</h3>
+        <div class="ad-content">
+            <h4 id="portalAdTitle">熱門商品推薦</h4>
+            <p id="portalAdDesc">精選商品，為您帶來好體驗</p>
+            <div style="margin-top: 15px; font-size: 14px; color: #ffd166;">
+                <span id="portalAdCategory">推薦類別</span> • 
+                <span id="portalAdPrice">NT$ 999</span>
+            </div>
+        </div>
+        <button class="popup-button" onclick="visitPortalAd()">查看詳情</button>
+    </div>
+`;
+
+// 廣告資料
+const portalAds = [
+    {
+        id: 'portal-book-1',
+        title: '暢銷書籍推薦',
+        description: '各類熱門書籍，知識與娛樂兼具',
+        category: '書籍雜誌',
+        price: 'NT$ 450'
+    },
+    {
+        id: 'portal-camera-1',
+        title: '攝影器材特價',
+        description: '專業攝影設備，限時優惠中',
+        category: '電子產品',
+        price: 'NT$ 2,800'
+    },
+    {
+        id: 'portal-health-1',
+        title: '健康生活用品',
+        description: '提升生活品質的健康產品',
+        category: '健康生活',
+        price: 'NT$ 1,280'
+    },
+    {
+        id: 'portal-course-1',
+        title: '線上學習課程',
+        description: '隨時隨地學習新技能',
+        category: '教育學習',
+        price: 'NT$ 1,980'
+    }
+];
+
+// 顯示廣告pop up
+function showPortalAd(adId) {
+    console.log('顯示入口網站廣告pop up:', adId);
+    
+    const ad = portalAds.find(a => a.id === adId) || portalAds[0];
+    
+    document.getElementById('portalAdTitle').textContent = ad.title;
+    document.getElementById('portalAdDesc').textContent = ad.description;
+    document.getElementById('portalAdCategory').textContent = ad.category;
+    document.getElementById('portalAdPrice').textContent = ad.price;
+    
+    // 儲存當前廣告ID
+    window.currentPortalAdId = ad.id;
+    
+    // 顯示跳出廣告
+    document.getElementById('portalOverlay').classList.add('active');
+    document.getElementById('portalPopupAd').classList.add('active');
+}
+
+// 關閉廣告pop up
+function closePortalPopupAd() {
+    document.getElementById('portalOverlay').classList.remove('active');
+    document.getElementById('portalPopupAd').classList.remove('active');
+}
+
+// 訪問廣告
+function visitPortalAd() {
+    if (window.currentPortalAdId) {
+        trackAd(window.currentPortalAdId);
+    }
+    closePortalPopupAd();
+}
+
+// 修改現有trackAd函數，添加pop up
+function enhanceTrackAd() {
+    const originalTrackAd = window.trackAd;
+    
+    window.trackAd = function(adId) {
+        console.log('追蹤廣告並顯示pop up:', adId);
+        
+        // 顯示廣告pop up
+        showPortalAd(adId);
+        
+        // 呼叫原始函數
+        if (typeof originalTrackAd === 'function') {
+            return originalTrackAd(adId);
+        }
+        
+        return false;
+    };
+    
+    console.log('已增強trackAd函數，添加廣告pop up');
+}
+
+// 初始化
+function initPortalPopup() {
+    console.log('初始化入口網站廣告pop up...');
+    
+    // 添加樣式
+    document.head.insertAdjacentHTML('beforeend', popupStyle);
+    
+    // 添加HTML結構
+    document.body.insertAdjacentHTML('beforeend', popupHTML);
+    
+    // 增強trackAd函數
+    enhanceTrackAd();
+    
+    // 點擊遮罩層關閉廣告
+    document.getElementById('portalOverlay').addEventListener('click', closePortalPopupAd);
+    
+    console.log('入口網站廣告pop up初始化完成');
+}
+
+// 頁面載入完成後初始化
+document.addEventListener('DOMContentLoaded', function() {
+    console.log('入口網站DOM載入完成');
+    initPortalPopup();
+    
+    // 添加測試按鈕
+    const adSection = document.querySelector('.ad-section');
+    if (adSection) {
+        const testButton = document.createElement('button');
+        testButton.textContent = '🔧 測試廣告pop up';
+        testButton.style.cssText = `
+            display: block;
+            margin: 20px auto;
+            padding: 10px 20px;
+            background: #4ecdc4;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+        `;
+        testButton.onclick = function() {
+            showPortalAd('portal-book-1');
+        };
+        adSection.appendChild(testButton);
+    }
+});</script>
 </body>
 </html>

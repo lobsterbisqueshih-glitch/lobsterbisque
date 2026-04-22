@@ -47,7 +47,7 @@ const portalAds = [
 ];
 
 // ============================================================
-// 天機閣廣告（使用新發現的有效推廣碼）
+// 天機閣廣告（暫時只使用真正有效的推廣碼）
 // ============================================================
 const destinyAds = [
     {
@@ -57,64 +57,64 @@ const destinyAds = [
         category: '服飾內衣',
         service: '生活用品',
         image: 'https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=400&h=250&fit=crop',
-        link: 'https://shoppingfun.co/3QW_R'  // 保留這個，內容完整
+        link: 'https://shoppingfun.co/3QW_R'  // 唯一真正有效的推廣碼
     },
     {
         id: 'destiny-ad-2',
-        title: '精選生活用品',
-        description: '高品質生活用品，提升日常體驗',
-        category: '生活百貨',
+        title: '更多商品即將上線',
+        description: '正在尋找更多優質商品，敬請期待',
+        category: '即將上線',
         service: '生活用品',
         image: 'https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?w=400&h=250&fit=crop',
-        link: 'https://shoppingfun.co/3QW_W'  // 新發現的有效推廣碼
+        link: '#'  // 暫時留空
     },
     {
         id: 'destiny-ad-3',
-        title: '熱門商品推薦',
-        description: '大家都在買的人氣商品',
-        category: '熱門推薦',
+        title: '精選商品籌備中',
+        description: '為您挑選最優質的商品',
+        category: '籌備中',
         service: '生活用品',
         image: 'https://images.unsplash.com/photo-1516035069371-29a1b244cc32?w=400&h=250&fit=crop',
-        link: 'https://shoppingfun.co/3QW_Q'  // 新發現的有效推廣碼
+        link: '#'  // 暫時留空
     },
     {
         id: 'destiny-ad-4',
-        title: '限時優惠商品',
-        description: '精選商品，限時優惠中',
-        category: '精選推薦',
+        title: '限時優惠準備中',
+        description: '優惠活動即將開始',
+        category: '準備中',
         service: '生活用品',
         image: 'https://images.unsplash.com/photo-1589998059171-988d887df646?w=400&h=250&fit=crop',
-        link: 'https://shoppingfun.co/3QW_S'  // 新發現的有效推廣碼
+        link: '#'  // 暫時留空
     }
 ];
 
 // ============================================================
-// 運勢結果頁廣告（使用新發現的有效推廣碼）
+// 運勢結果頁廣告（暫時只使用真正有效的推廣碼）
 // ============================================================
 const resultAds = [
     {
         id: 'result-ad-1',
-        title: '今日精選推薦',
-        description: '優質商品，提升生活品質',
+        title: '佳瑪內衣精選',
+        description: '舒適透氣內衣，限時優惠中',
         image: 'https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?w=400&h=200&fit=crop',
         buttonText: '立即查看',
-        link: 'https://shoppingfun.co/3QW_1'  // 新發現的有效推廣碼
+        link: 'https://shoppingfun.co/3QW_R'  // 唯一真正有效的推廣碼
     },
     {
         id: 'result-ad-2',
-        title: '熱門商品推薦',
-        description: '大家都在買的人氣商品',
+        title: '更多商品籌備中',
+        description: '正在為您尋找優質商品',
         image: 'https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=400&h=200&fit=crop',
-        buttonText: '了解更多',
-        link: 'https://shoppingfun.co/3QW_2'  // 新發現的有效推廣碼
+        buttonText: '敬請期待',
+        link: '#'  // 暫時留空
     },
     {
         id: 'result-ad-3',
-        title: '限時優惠商品',
-        description: '精選商品，限時優惠中',
+        title: '優惠活動準備中',
+        description: '限時優惠即將開始',
         image: 'https://images.unsplash.com/photo-1516035069371-29a1b244cc32?w=400&h=200&fit=crop',
-        buttonText: '開始選購',
-        link: 'https://shoppingfun.co/3QW_3'  // 新發現的有效推廣碼
+        buttonText: '即將上線',
+        link: '#'  // 暫時留空
     }
 ];
 

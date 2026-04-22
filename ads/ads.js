@@ -47,7 +47,7 @@ const portalAds = [
 ];
 
 // ============================================================
-// 天機閣廣告（使用現有推廣碼，標題匹配實際商品）
+// 天機閣廣告（使用新發現的有效推廣碼）
 // ============================================================
 const destinyAds = [
     {
@@ -57,39 +57,39 @@ const destinyAds = [
         category: '服飾內衣',
         service: '生活用品',
         image: 'https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=400&h=250&fit=crop',
-        link: 'https://shoppingfun.co/3QW_R'
+        link: 'https://shoppingfun.co/3QW_R'  // 保留這個，內容完整
     },
     {
         id: 'destiny-ad-2',
-        title: 'MyMall精選生活好物',
-        description: '各類優質商品，滿足日常需求',
+        title: '精選生活用品',
+        description: '高品質生活用品，提升日常體驗',
         category: '生活百貨',
         service: '生活用品',
         image: 'https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?w=400&h=250&fit=crop',
-        link: 'https://dreamstore.info/3QW_X'
+        link: 'https://shoppingfun.co/3QW_W'  // 新發現的有效推廣碼
     },
     {
         id: 'destiny-ad-3',
-        title: '熱門商品限時優惠',
+        title: '熱門商品推薦',
         description: '大家都在買的人氣商品',
         category: '熱門推薦',
         service: '生活用品',
         image: 'https://images.unsplash.com/photo-1516035069371-29a1b244cc32?w=400&h=250&fit=crop',
-        link: 'https://www1.gamepark.com.tw/3QW_Y'
+        link: 'https://shoppingfun.co/3QW_Q'  // 新發現的有效推廣碼
     },
     {
         id: 'destiny-ad-4',
-        title: '精選商品推薦',
-        description: '優質商品，提升生活品質',
+        title: '限時優惠商品',
+        description: '精選商品，限時優惠中',
         category: '精選推薦',
         service: '生活用品',
         image: 'https://images.unsplash.com/photo-1589998059171-988d887df646?w=400&h=250&fit=crop',
-        link: 'https://igrape.net/3QW_a'
+        link: 'https://shoppingfun.co/3QW_S'  // 新發現的有效推廣碼
     }
 ];
 
 // ============================================================
-// 運勢結果頁廣告（使用現有推廣碼）
+// 運勢結果頁廣告（使用新發現的有效推廣碼）
 // ============================================================
 const resultAds = [
     {
@@ -98,7 +98,7 @@ const resultAds = [
         description: '優質商品，提升生活品質',
         image: 'https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?w=400&h=200&fit=crop',
         buttonText: '立即查看',
-        link: 'https://shoppingfun.co/3QW_R'
+        link: 'https://shoppingfun.co/3QW_1'  // 新發現的有效推廣碼
     },
     {
         id: 'result-ad-2',
@@ -106,7 +106,7 @@ const resultAds = [
         description: '大家都在買的人氣商品',
         image: 'https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=400&h=200&fit=crop',
         buttonText: '了解更多',
-        link: 'https://dreamstore.info/3QW_X'
+        link: 'https://shoppingfun.co/3QW_2'  // 新發現的有效推廣碼
     },
     {
         id: 'result-ad-3',
@@ -114,7 +114,7 @@ const resultAds = [
         description: '精選商品，限時優惠中',
         image: 'https://images.unsplash.com/photo-1516035069371-29a1b244cc32?w=400&h=200&fit=crop',
         buttonText: '開始選購',
-        link: 'https://www1.gamepark.com.tw/3QW_Y'
+        link: 'https://shoppingfun.co/3QW_3'  // 新發現的有效推廣碼
     }
 ];
 

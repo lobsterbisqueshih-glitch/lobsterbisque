@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>強制清除快取</title>
+    <script>
+        // 強制清除快取並重新導向
+        if (window.location.search.indexOf('reload=true') === -1) {
+            // 清除快取
+            if ('caches' in window) {
+                caches.keys().then(function(names) {
+                    for (let name of names) caches.delete(name);
+                });
+            }
+            
+            // 清除 localStorage 中的廣告快取
+            localStorage.removeItem('ad-monitoring-results');
+            localStorage.removeItem('ad-performance-history');
+            
+            // 重新導向並強制重新載入
+            setTimeout(function() {
+                window.location.href = window.location.href.split('?')[0] + '?reload=true&t=' + Date.now();
+            }, 1000);
+        }
+    </script>
+</head>
+<body>
+    <h1>正在清除快取並重新載入...</h1>
+    <p>請稍候，頁面將自動重新整理。</p>
+</body>
+</html>

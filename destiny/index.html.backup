@@ -1,0 +1,1621 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>天機閣 - 專業命理服務</title>
+    <meta name="description" content="專業命理服務：今日運勢查詢、紫微斗數、八字命理、姓名學分析、靈籤堂抽籤。">
+    <style>
+        :root {
+            --primary: #2d1b3d;
+            --secondary: #1a1a2e;
+            --accent: #ff6b6b;
+            --accent-secondary: #ff8e53;
+            --text-light: #ffffff;
+            --text-dark: #333333;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', 'Microsoft JhengHei', sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: var(--text-light);
+            line-height: 1.6;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 30px;
+            background: rgba(255,255,255,0.05);
+            border-radius: 20px;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        header {
+            text-align: center;
+            padding: 40px 0;
+            margin-bottom: 50px;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            background: linear-gradient(90deg, #ff6b6b, #ff8e53);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .subtitle {
+            font-size: 20px;
+            color: #ffd166;
+            max-width: 800px;
+            margin: 0 auto 30px;
+        }
+        
+        .back-link {
+            display: inline-block;
+            color: #4ecdc4;
+            text-decoration: none;
+            margin-top: 20px;
+            padding: 10px 20px;
+            border: 1px solid #4ecdc4;
+            border-radius: 5px;
+            transition: all 0.3s;
+        }
+        
+        .back-link:hover {
+            background: #4ecdc4;
+            color: white;
+        }
+        
+        /* 今日運勢區塊 - 置頂 */
+        .fortune-section {
+            background: rgba(255,255,255,0.05);
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 60px;
+            border: 1px solid rgba(255,213,102,0.2);
+        }
+        
+        .fortune-section h2 {
+            font-size: 32px;
+            margin-bottom: 20px;
+            color: #ffd166;
+            text-align: center;
+        }
+        
+        .fortune-form {
+            max-width: 500px;
+            margin: 0 auto;
+            background: rgba(255,255,255,0.03);
+            padding: 30px;
+            border-radius: 15px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #ffd166;
+        }
+        
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 12px;
+            border-radius: 8px;
+            border: 1px solid rgba(255,107,107,0.3);
+            background: rgba(255,255,255,0.05);
+            color: white;
+            font-size: 16px;
+        }
+        
+        .form-group input:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--accent);
+        }
+        
+        .submit-button {
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(90deg, #ff6b6b, #ff8e53);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .submit-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(255,107,107,0.3);
+        }
+        
+        /* 運勢結果中間廣告 */
+        .result-ad {
+            background: rgba(255,107,107,0.1);
+            border-radius: 12px;
+            padding: 20px;
+            margin: 25px 0;
+            border: 1px solid rgba(255,107,107,0.3);
+            text-align: center;
+        }
+        
+        .result-ad h4 {
+            color: #ffd166;
+            margin-bottom: 10px;
+            font-size: 18px;
+        }
+        
+        .result-ad p {
+            color: #aaa;
+            margin-bottom: 15px;
+            font-size: 14px;
+        }
+        
+        .result-ad-image {
+            width: 100%;
+            height: 120px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
+        
+        .result-ad-button {
+            display: inline-block;
+            background: #ff6b6b;
+            color: white;
+            padding: 8px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-size: 14px;
+            transition: all 0.3s;
+        }
+        
+        .result-ad-button:hover {
+            background: #ff8e53;
+            transform: translateY(-2px);
+        }
+        
+        /* 服務項目 */
+        .services {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+        
+        .service-card {
+            background: rgba(255,255,255,0.05);
+            border-radius: 15px;
+            padding: 30px;
+            border-left: 5px solid var(--accent);
+            transition: all 0.3s;
+            cursor: pointer;
+            position: relative;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-5px);
+            background: rgba(255,255,255,0.1);
+            box-shadow: 0 10px 20px rgba(255,107,107,0.2);
+        }
+        
+        .service-icon {
+            font-size: 40px;
+            margin-bottom: 20px;
+            color: var(--accent);
+        }
+        
+        .service-card h3 {
+            font-size: 24px;
+            margin-bottom: 15px;
+            color: #ffd166;
+        }
+        
+        .service-card p {
+            color: #aaa;
+            margin-bottom: 25px;
+            line-height: 1.7;
+        }
+        
+        .service-features {
+            list-style: none;
+            margin-bottom: 25px;
+        }
+        
+        .service-features li {
+            padding: 8px 0;
+            color: #ccc;
+            position: relative;
+            padding-left: 25px;
+        }
+        
+        .service-features li::before {
+            content: '✦';
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+        }
+        
+        .service-button {
+            display: inline-block;
+            background: var(--accent);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .service-button:hover {
+            background: #ff8e53;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(255,107,107,0.3);
+        }
+        
+        /* 靈籤堂按鈕樣式 */
+        .fortune-stick-btn {
+            background: rgba(157, 78, 221, 0.1);
+            border: 1px solid rgba(157, 78, 221, 0.3);
+            border-radius: 8px;
+            padding: 15px;
+            color: white;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-align: center;
+        }
+        
+        .fortune-stick-btn:hover {
+            background: rgba(157, 78, 221, 0.2);
+            transform: translateY(-2px);
+            border-color: #9d4edd;
+        }
+        
+        /* 廣告區域 - 所有廣告都有圖案 */
+        .ad-section {
+            background: rgba(255,255,255,0.05);
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 60px;
+            text-align: center;
+            border: 1px solid rgba(255,107,107,0.2);
+        }
+        
+        .ad-section h2 {
+            font-size: 32px;
+            margin-bottom: 10px;
+            color: var(--accent);
+        }
+        
+        .ad-section p {
+            color: #ffd166;
+            margin-bottom: 40px;
+            font-size: 18px;
+        }
+        
+        .ad-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
+        
+        .ad-card {
+            background: rgba(255,255,255,0.03);
+            border-radius: 15px;
+            padding: 25px;
+            text-align: center;
+            border: 1px solid rgba(255,107,107,0.1);
+            transition: all 0.3s;
+        }
+        
+        .ad-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent);
+            box-shadow: 0 10px 20px rgba(255,107,107,0.2);
+        }
+        
+        .ad-image {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin-bottom: 15px;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        .ad-card h4 {
+            color: white;
+            margin-bottom: 10px;
+            font-size: 18px;
+        }
+        
+        .ad-card p {
+            color: #aaa;
+            font-size: 14px;
+            margin-bottom: 15px;
+            min-height: 40px;
+        }
+        
+        .ad-meta {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+            font-size: 12px;
+        }
+        
+        .ad-category {
+            color: var(--accent);
+            background: rgba(255,107,107,0.1);
+            padding: 4px 8px;
+            border-radius: 4px;
+        }
+        
+        .ad-price {
+            color: #ffd166;
+            font-weight: bold;
+        }
+        
+        .ad-button {
+            display: block;
+            text-align: center;
+            background: linear-gradient(90deg, #ff6b6b, #ff8e53);
+            color: white;
+            padding: 12px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+        
+        .ad-button:hover {
+            background: linear-gradient(90deg, #ff8e53, #ff6b6b);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255,107,107,0.3);
+        }
+        
+        /* 跳出廣告樣式 */
+        .popup-ad {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0.9);
+            background: rgba(26, 26, 46, 0.95);
+            border: 2px solid #ff6b6b;
+            border-radius: 15px;
+            padding: 30px;
+            width: 90%;
+            max-width: 400px;
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+        }
+        
+        .popup-ad.active {
+            opacity: 1;
+            visibility: visible;
+            transform: translate(-50%, -50%) scale(1);
+        }
+        
+        .popup-ad h3 {
+            color: #ffd166;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+        
+        .popup-ad p {
+            color: #aaa;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
+        .popup-ad .ad-content {
+            background: rgba(255,255,255,0.05);
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .popup-ad .popup-image {
+            width: 100%;
+            height: 120px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
+        
+        .popup-ad .close-btn {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: none;
+            border: none;
+            color: #aaa;
+            font-size: 24px;
+            cursor: pointer;
+        }
+        
+        .popup-ad .close-btn:hover {
+            color: #ff6b6b;
+        }
+        
+        .popup-ad .popup-button {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            background: linear-gradient(90deg, #ff6b6b, #ff8e53);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .popup-ad .popup-button:hover {
+            background: linear-gradient(90deg, #ff8e53, #ff6b6b);
+            transform: translateY(-2px);
+        }
+        
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.7);
+            z-index: 999;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s;
+        }
+        
+        .overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        /* 小方塊廣告 */
+        .mini-ad {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: rgba(26, 26, 46, 0.9);
+            border: 1px solid #4ecdc4;
+            border-radius: 10px;
+            padding: 15px;
+            width: 250px;
+            z-index: 100;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+            transform: translateY(100px);
+            opacity: 0;
+            transition: all 0.5s ease;
+        }
+        
+        .mini-ad.show {
+            transform: translateY(0);
+            opacity: 1;
+        }
+        
+        .mini-ad h4 {
+            color: #4ecdc4;
+            margin-bottom: 8px;
+            font-size: 14px;
+        }
+        
+        .mini-ad p {
+            color: #aaa;
+            font-size: 12px;
+            margin-bottom: 10px;
+        }
+        
+        .mini-ad .mini-image {
+            width: 100%;
+            height: 80px;
+            object-fit: cover;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+        
+        .mini-ad .mini-button {
+            display: block;
+            background: #4ecdc4;
+            color: white;
+            padding: 8px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-size: 12px;
+            text-align: center;
+        }
+        
+        .mini-ad .close-mini {
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            background: none;
+            border: none;
+            color: #aaa;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            margin-top: 60px;
+            color: #aaa;
+        }
+        
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .footer-links a {
+            color: #aaa;
+            text-decoration: none;
+        }
+        
+        .footer-links a:hover {
+            color: #ffd166;
+        }
+        
+        .copyright {
+            font-size: 14px;
+            color: #666;
+            margin-top: 40px;
+            padding-top: 40px;
+            border-top: 1px solid rgba(255,255,255,0.05);
+        }
+        
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 36px;
+            }
+            
+            .subtitle {
+                font-size: 16px;
+            }
+            
+            .services {
+                grid-template-columns: 1fr;
+            }
+            
+            .ad-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-links {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .popup-ad {
+                width: 95%;
+                padding: 20px;
+            }
+            
+            .mini-ad {
+                width: 200px;
+                right: 10px;
+                bottom: 10px;
+            }
+            
+            .result-ad-image {
+                height: 100px;
+            }
+            
+            .fortune-stick-btn {
+                padding: 12px;
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 跳出廣告 -->
+    <div class="overlay" id="overlay"></div>
+    
+    <div class="popup-ad" id="popupAd">
+        <button class="close-btn" onclick="closePopupAd()">×</button>
+        <h3>推薦商品</h3>
+        <div class="ad-content">
+            <img src="https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=400&h=200&fit=crop" alt="推薦商品" class="popup-image">
+            <h4 id="popupAdTitle">精選生活用品</h4>
+            <p id="popupAdDesc">精選生活用品，提升生活品質</p>
+            <div style="margin-top: 15px; font-size: 14px; color: #ffd166;">
+                <span id="popupAdCategory">書籍雜誌</span> • 
+                
+            </div>
+        </div>
+        <button class="popup-button" onclick="visitAd()">查看詳情</button>
+    </div>
+    
+    <!-- 靈籤堂彈出視窗 -->
+    <div class="popup-ad" id="fortuneStickPopup" style="max-width: 500px; border-color: #9d4edd;">
+        <button class="close-btn" onclick="closeFortuneStick()">×</button>
+        <h3>🎋 靈籤堂 - 線上抽籤</h3>
+        <div class="ad-content">
+            <div style="text-align: center; margin-bottom: 20px;">
+                <div style="font-size: 48px; margin-bottom: 15px;">🎋</div>
+                <h4>選擇您想詢問的主題</h4>
+            </div>
+            
+            <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin-bottom: 20px;">
+                <button class="fortune-stick-btn" onclick="drawFortuneStick('general')">
+                    <div style="font-size: 24px;">🔮</div>
+                    <div>綜合運勢</div>
+                </button>
+                <button class="fortune-stick-btn" onclick="drawFortuneStick('love')">
+                    <div style="font-size: 24px;">❤️</div>
+                    <div>感情婚姻</div>
+                </button>
+                <button class="fortune-stick-btn" onclick="drawFortuneStick('career')">
+                    <div style="font-size: 24px;">💼</div>
+                    <div>事業工作</div>
+                </button>
+                <button class="fortune-stick-btn" onclick="drawFortuneStick('wealth')">
+                    <div style="font-size: 24px;">💰</div>
+                    <div>財運投資</div>
+                </button>
+                <button class="fortune-stick-btn" onclick="drawFortuneStick('health')">
+                    <div style="font-size: 24px;">🏥</div>
+                    <div>健康狀況</div>
+                </button>
+                <button class="fortune-stick-btn" onclick="drawFortuneStick('study')">
+                    <div style="font-size: 24px;">📚</div>
+                    <div>學業考試</div>
+                </button>
+                <button class="fortune-stick-btn" onclick="drawFortuneStick('family')">
+                    <div style="font-size: 24px;">👨‍👩‍👧‍👦</div>
+                    <div>家庭關係</div>
+                </button>
+                <button class="fortune-stick-btn" onclick="drawFortuneStick('travel')">
+                    <div style="font-size: 24px;">✈️</div>
+                    <div>旅行外出</div>
+                </button>
+            </div>
+            
+            <div id="fortuneStickResult" style="display: none;">
+                <div style="background: rgba(157, 78, 221, 0.1); padding: 20px; border-radius: 10px; border: 1px solid rgba(157, 78, 221, 0.3);">
+                    <h4 id="stickTitle" style="color: #9d4edd; text-align: center; margin-bottom: 15px;"></h4>
+                    <div id="stickContent" style="color: #aaa; line-height: 1.6;"></div>
+                    <div style="margin-top: 20px; text-align: center;">
+                        <button class="popup-button" onclick="drawFortuneStickAgain()" style="background: linear-gradient(90deg, #9d4edd, #6a0dad);">再抽一次</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- 小方塊廣告 -->
+    <div class="mini-ad" id="miniAd">
+        <button class="close-mini" onclick="closeMiniAd()">×</button>
+        <img src="https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?w=200&h=100&fit=crop" alt="精選內衣" class="mini-image">
+        <h4>今日精選推薦</h4>
+        <p>根據您的運勢結果，為您推薦精選生活用品</p>
+        <a href="https://www.ichannels.com.tw/product/example?member=3QWtn<a href="#" class="mini-button" onclick="trackMiniAd()">立即查看</a>track=mini-ad" class="mini-button" onclick="trackMiniAd(); return false;">立即查看</a>
+    </div>
+    
+    <div class="container">
+        <header>
+            <h1>🔮 天機閣 - 專業命理服務</h1>
+            <p class="subtitle">已上線服務：今日運勢查詢、紫微斗數、八字命理、姓名學分析、手相面相解讀、靈籤堂抽籤</p>
+            <a href="../" class="back-link">← 返回入口網站</a>
+        </header>
+        
+        <!-- 今日運勢 - 置頂 -->
+        <section class="fortune-section">
+            <h2>今日運勢查詢</h2>
+            <div class="fortune-form">
+                <div class="form-group">
+                    <label for="birth-date">出生年月日</label>
+                    <input type="date" id="birth-date" name="birth-date" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="question-type">想詢問的事項</label>
+                    <select id="question-type" name="question-type">
+                        <option value="general">綜合運勢</option>
+                        <option value="career">事業工作</option>
+                        <option value="love">感情婚姻</option>
+                        <option value="wealth">財運投資</option>
+                        <option value="health">健康狀況</option>
+                        <option value="study">學業考試</option>
+                        <option value="family">家庭關係</option>
+                        <option value="travel">旅行外出</option>
+                        <option value="decision">重要決策</option>
+                        <option value="opportunity">機會運勢</option>
+                        <option value="relationship">人際關係</option>
+                        <option value="creativity">創意靈感</option>
+                    </select>
+                </div>
+                
+                <button type="submit" class="submit-button" onclick="getFortune()">
+                    🔮 獲取今日運勢
+                </button>
+                
+                <div id="fortune-result" style="margin-top: 30px; display: none;">
+                    <div style="background: rgba(255,213,102,0.1); padding: 20px; border-radius: 10px; border: 1px solid rgba(255,213,102,0.3);">
+                        <h3 style="color: #ffd166; margin-bottom: 15px;">您的今日運勢</h3>
+                        <div id="fortune-content"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- 服務項目 -->
+        <section class="services">
+            <div class="service-card" onclick="showServiceAd('紫微斗數命盤', '舒適內衣推薦')">
+                <div class="service-icon">♈️</div>
+                <h3>紫微斗數命盤</h3>
+                <p>專業紫微斗數排盤，分析命盤格局、大運流年，深入解讀人生軌跡與發展方向。</p>
+                <ul class="service-features">
+                    <li>完整命盤製作</li>
+                    <li>十二宮位分析</li>
+                    <li>大運流年推算</li>
+                    <li>專業命理師解讀</li>
+                </ul>
+                <button class="service-button">預約諮詢</button>
+            </div>
+            
+            <div class="service-card" onclick="showServiceAd('八字命理分析', '優質內衣推薦')">
+                <div class="service-icon">🔢</div>
+                <h3>八字命理分析</h3>
+                <p>八字四柱排盤，分析五行生剋、十神格局，預測流年運勢與人生發展趨勢。</p>
+                <ul class="service-features">
+                    <li>八字四柱排盤</li>
+                    <li>五行生剋分析</li>
+                    <li>十神格局解讀</li>
+                    <li>流年運勢預測</li>
+                </ul>
+                <button class="service-button">預約諮詢</button>
+            </div>
+            
+            <div class="service-card" onclick="showServiceAd('姓名學分析', '精選內衣推薦')">
+                <div class="service-icon">✍️</div>
+                <h3>姓名學分析</h3>
+                <p>姓名筆劃分析，結合八字五行，為您提供改名建議與命名服務，改善運勢。</p>
+                <ul class="service-features">
+                    <li>姓名筆劃分析</li>
+                    <li>五行八字配合</li>
+                    <li>改名建議服務</li>
+                    <li>命名方案提供</li>
+                </ul>
+                <button class="service-button">預約諮詢</button>
+            </div>
+            
+            <div class="service-card" onclick="showServiceAd('手相面相解讀', '限時優惠推薦')">
+                <div class="service-icon">🖐️</div>
+                <h3>手相面相解讀</h3>
+                <p>透過手相紋路與面相特徵分析性格特質、事業發展、感情婚姻與健康狀況。</p>
+                <ul class="service-features">
+                    <li>手相紋路分析</li>
+                    <li>面相特徵解讀</li>
+                    <li>性格特質分析</li>
+                    <li>健康狀況評估</li>
+                </ul>
+                <button class="service-button">預約諮詢</button>
+            </div>
+            
+            <!-- 靈籤堂 - 新增 -->
+            <div class="service-card" onclick="showFortuneStick()">
+                <div class="service-icon">🎋</div>
+                <h3 style="color: #9d4edd;">靈籤堂</h3>
+                <p>線上抽籤服務，提供各種籤詩解讀，包括感情、事業、健康等主題籤詩。</p>
+                <ul class="service-features">
+                    <li>線上抽籤系統</li>
+                    <li>各類主題籤詩</li>
+                    <li>專業籤詩解讀</li>
+                    <li>每日運勢籤</li>
+                </ul>
+                <button class="service-button" onclick="showFortuneStick()">立即抽籤</button>
+            </div>
+        </section>
+        
+        <!-- 廣告區域 - 所有廣告都有圖案 -->
+        <section class="ad-section">
+            <h2 id="destiny-ad-section-title">精選推薦</h2>
+            <p id="destiny-ad-section-desc">以下為精選商品，點擊圖片了解更多：</p>
+            
+            <div class="ad-grid">
+                <div class="ad-card">
+                    <img src="https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=400&h=250&fit=crop" alt="紫微斗數書籍" class="ad-image">
+                    <h4>紫微斗數入門經典</h4>
+                    <p>精選生活用品，提升日常品質</p>
+                    <div class="ad-meta">
+                        <span class="ad-category">書籍雜誌</span>
+                        
+                    </div>
+                    <a href="https://www.ichannels.com.tw/product/example-book?member=3QWtn<a href="#" class="ad-button" onclick="trackAd('destiny-book-1')">查看詳情</a>track=destiny-book-1" class="ad-button" onclick="trackAd(.destiny-book-1.); return false;">查看詳情</a>
+                </div>
+                
+                <div class="ad-card">
+                    <img src="https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?w=400&h=250&fit=crop" alt="舒適內衣" class="ad-image">
+                    <h4 class="ad-title">商品標題</h4>
+                    <p class="ad-description">商品描述</p>
+                    <div class="ad-meta">
+                        <span class="ad-category">其他類別</span>
+                        
+                    </div>
+                    <a href="https://www.ichannels.com.tw/product/example-crystal?member=3QWtn<a href="#" class="ad-button" onclick="trackAd('destiny-crystal-1')">查看詳情</a>track=destiny-crystal-1" class="ad-button" onclick="trackAd(.destiny-crystal-1.); return false;">查看詳情</a>
+                </div>
+                
+                <div class="ad-card">
+                    <img src="https://images.unsplash.com/photo-1516035069371-29a1b244cc32?w=400&h=250&fit=crop" alt="優質內衣" class="ad-image">
+                    <h4 class="ad-title">商品標題</h4>
+                    <p class="ad-description">商品描述</p>
+                    <div class="ad-meta">
+                        <span class="ad-category">教育學習</span>
+                        
+                    </div>
+                    <a href="https://www.ichannels.com.tw/product/example-course?member=3QWtn<a href="#" class="ad-button" onclick="trackAd('destiny-course-1')">查看詳情</a>track=destiny-course-1" class="ad-button" onclick="trackAd(.destiny-course-1.); return false;">查看詳情</a>
+                </div>
+                
+                <div class="ad-card">
+                    <img src="https://images.unsplash.com/photo-1589998059171-988d887df646?w=400&h=250&fit=crop" alt="舒適內衣" class="ad-image">
+                    <h4 class="ad-title">商品標題</h4>
+                    <p>電腦排盤軟體，快速準確分析命盤</p>
+                    <div class="ad-meta">
+                        <span class="ad-category">教育學習</span>
+                        
+                    </div>
+                    <a href="https://www.ichannels.com.tw/product/example-tool?member=3QWtn<a href="#" class="ad-button" onclick="trackAd('destiny-tool-1')">查看詳情</a>track=destiny-tool-1" class="ad-button" onclick="trackAd(.destiny-tool-1.); return false;">查看詳情</a>
+                </div>
+            </div>
+        </section>
+        
+        <footer>
+            <div class="footer-links">
+                <a href="#fortune">今日運勢</a>
+                <a href="#services">服務項目</a>
+                <a href="#ads">推薦商品</a>
+                <a href="../">返回入口網站</a>
+            </div>
+            
+            <div class="copyright">
+                <p>© 2026 天機閣專業命理服務</p>
+            </div>
+        </footer>
+    </div>
+    
+    <script>
+        // 廣告資料庫 - 從外部載入
+        // 廣告資料已分離至 ../ads/ads.js
+        // 如需修改廣告，編輯 ../ads/ads.js 即可
+
+// 運勢結果中間廣告資料
+const resultAds = [
+    {
+        id: 'result-ad-1',
+        title: '根據您的運勢推薦',
+        description: '舒適透氣內衣，提升生活品質',
+        image: 'https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?w=400&h=200&fit=crop',
+        buttonText: '立即查看',
+        link: 'https://shoppingfun.co/3QW_R'
+    },
+    {
+        id: 'result-ad-2',
+        title: '運勢相關商品',
+        description: '命理書籍，深入了解運勢原理',
+        image: 'https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=400&h=200&fit=crop',
+        buttonText: '了解更多',
+        link: 'https://dreamstore.info/3QW_X'
+    },
+    {
+        id: 'result-ad-3',
+        title: '提升運勢推薦',
+        description: '優質內衣，提升生活品質',
+        image: 'https://images.unsplash.com/photo-1516035069371-29a1b244cc32?w=400&h=200&fit=crop',
+        buttonText: '開始學習',
+        link: 'https://www1.gamepark.com.tw/3QW_Y'
+    }
+];
+
+console.log('廣告連結已更新為iChannels格式');
+// 運勢結果中間廣告資料 - 從外部載入
+// 廣告資料已分離至 ../ads/ads.js
+// 如需修改廣告，編輯 ../ads/ads.js 即可
+
+// 修復廣告點擊追蹤函數
+function trackAd(adId) {
+    // 找到對應廣告
+    const allAds = [...ads, ...resultAds];
+    const ad = allAds.find(a => a.id === adId);
+    
+    if (!ad) {
+        console.error('找不到廣告:', adId);
+        return false;
+    }
+    
+    // 後台追蹤記錄
+    const trackData = {
+        adId: adId,
+        memberId: '3QWtn',
+        timestamp: new Date().toISOString(),
+        pageUrl: window.location.href,
+        userAgent: navigator.userAgent,
+        adTitle: ad.title
+    };
+    
+    console.log('廣告追蹤（後台）:', trackData);
+    
+    // 實際跳轉到廣告連結
+    if (ad.link) {
+        // 模擬發送追蹤數據到後台
+        try {
+            // 這裡可以發送追蹤數據到iChannels
+            // fetch('/api/track-ad', { method: 'POST', body: JSON.stringify(trackData) });
+            
+            // 實際跳轉
+            window.open(ad.link, '_blank');
+            return true;
+        } catch (error) {
+            console.error('廣告跳轉失敗:', error);
+            // 備用方案：直接跳轉
+            window.location.href = ad.link;
+            return true;
+        }
+    } else {
+        console.warn('廣告缺少連結:', adId);
+        alert('廣告連結準備中，請稍後再試');
+        return false;
+    }
+}
+
+// 修復跳出廣告訪問函數
+function visitAd() {
+    if (window.currentAdId) {
+        trackAd(window.currentAdId);
+    }
+    closePopupAd();
+}
+
+// 修復小方塊廣告點擊
+function trackMiniAd() {
+    if (window.currentMiniAdId) {
+        trackAd(window.currentMiniAdId);
+    }
+    closeMiniAd();
+}
+
+// 修復結果中間廣告HTML生成
+function getFortune() {
+    const birthDate = document.getElementById('birth-date').value;
+    const questionType = document.getElementById('question-type').value;
+    
+    if (!birthDate) {
+        alert('請輸入出生年月日');
+        return;
+    }
+    
+    const fortune = expandedFortunes[questionType] || expandedFortunes.general;
+    
+    // 隨機選擇一個結果中間廣告
+    const resultAd = resultAds[Math.floor(Math.random() * resultAds.length)];
+    
+    // 建立運勢結果HTML，在中間插入廣告
+    const fortuneHTML = `
+        <p><strong>${fortune.title}</strong></p>
+        <p>${fortune.content}</p>
+        
+        <!-- 結果中間廣告 -->
+        <div class="result-ad">
+            <img src="${resultAd.image}" alt="${resultAd.title}" class="result-ad-image">
+            <h4>${resultAd.title}</h4>
+            <p>${resultAd.description}</p>
+            <a href="${resultAd.link}" class="result-ad-button" onclick="trackAd('${resultAd.id}'); return false;">${resultAd.buttonText}</a>
+        </div>
+        
+        <div style="margin-top: 15px;">
+            <span style="color: #ffd166;">幸運色：${fortune.luckyColor}</span> | 
+            <span style="color: #ffd166;">幸運數字：${fortune.luckyNumber}</span>
+        </div>
+        <p style="margin-top: 15px; font-style: italic; color: #aaa;">
+            以上分析僅供參考，實際運勢取決於個人努力與選擇。
+        </p>
+    `;
+    
+    document.getElementById('fortune-content').innerHTML = fortuneHTML;
+    document.getElementById('fortune-result').style.display = 'block';
+    
+    // 顯示小方塊廣告（運算完成後）
+    setTimeout(() => {
+        showMiniAd();
+    }, 1000);
+    
+    // 滾動到結果
+    document.getElementById('fortune-result').scrollIntoView({ behavior: 'smooth' });
+}        
+        // 運勢結果中間廣告資料
+        const resultAds = [
+            {
+                id: 'result-ad-1',
+                title: '根據您的運勢推薦',
+                description: '舒適透氣內衣，提升生活品質',
+                image: 'https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?w=400&h=200&fit=crop',
+                buttonText: '立即查看'
+            },
+            {
+                id: 'result-ad-2',
+                title: '運勢相關商品',
+                description: '命理書籍，深入了解運勢原理',
+                image: 'https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=400&h=200&fit=crop',
+                buttonText: '了解更多'
+            },
+            {
+                id: 'result-ad-3',
+                title: '提升運勢推薦',
+                description: '優質內衣，適合日常穿著',
+                image: 'https://images.unsplash.com/photo-1516035069371-29a1b244cc32?w=400&h=200&fit=crop',
+                buttonText: '開始學習'
+            }
+        ];
+        
+        // 靈籤堂籤詩資料庫
+        const fortuneSticks = {
+            general: [
+                {
+                    title: '上上籤 - 大吉大利',
+                    content: '今日運勢極佳，諸事順利。事業上有貴人相助，感情方面甜蜜美滿，財運亨通，健康狀況良好。把握機會，積極行動。',
+                    luckyColor: '金色',
+                    luckyNumber: 8
+                },
+                {
+                    title: '中上籤 - 平穩順利',
+                    content: '運勢平穩，各方面進展順利。工作上按部就班即可，感情需要多溝通，財運穩定，健康無大礙。保持耐心，穩步前進。',
+                    luckyColor: '藍色',
+                    luckyNumber: 3
+                },
+                {
+                    title: '中平籤 - 中庸之道',
+                    content: '運勢中庸，需謹慎行事。工作上可能遇到小挑戰，感情需要用心經營，財運平平，注意健康保養。保持平衡，避免衝動。',
+                    luckyColor: '綠色',
+                    luckyNumber: 5
+                }
+            ],
+            love: [
+                {
+                    title: '姻緣籤 - 良緣將至',
+                    content: '感情運勢佳，單身者可能遇到合適對象，有伴侶者感情更加甜蜜。多參加社交活動，展現真實自我。',
+                    luckyColor: '粉色',
+                    luckyNumber: 9
+                },
+                {
+                    title: '和合籤 - 溝通為重',
+                    content: '感情需要更多溝通與理解。避免誤會產生，多表達關心與愛意，關係將更加穩固。',
+                    luckyColor: '紅色',
+                    luckyNumber: 2
+                }
+            ],
+            career: [
+                {
+                    title: '事業籤 - 步步高升',
+                    content: '事業運勢強勁，有晉升機會。展現專業能力，積極爭取表現，將獲得上司賞識。',
+                    luckyColor: '黑色',
+                    luckyNumber: 7
+                },
+                {
+                    title: '工作籤 - 穩健發展',
+                    content: '工作平穩，適合學習新技能。與同事合作順暢，專注本職工作，未來發展可期。',
+                    luckyColor: '灰色',
+                    luckyNumber: 4
+                }
+            ],
+            wealth: [
+                {
+                    title: '財運籤 - 財源廣進',
+                    content: '財運亨通，有意外之財機會。但需謹慎投資，避免衝動消費，理財規劃為上。',
+                    luckyColor: '金色',
+                    luckyNumber: 6
+                },
+                {
+                    title: '投資籤 - 穩健為宜',
+                    content: '財運平穩，不宜進行高風險投資。建議儲蓄或小額理財，保守為上策。',
+                    luckyColor: '銀色',
+                    luckyNumber: 1
+                }
+            ],
+            health: [
+                {
+                    title: '健康籤 - 身心安康',
+                    content: '健康狀況良好，但需注意休息。適當運動，均衡飲食，保持良好生活習慣。',
+                    luckyColor: '綠色',
+                    luckyNumber: 3
+                },
+                {
+                    title: '養生籤 - 調養為重',
+                    content: '需注意身體調養，避免過度勞累。多休息，適當放鬆，關注身心健康。',
+                    luckyColor: '白色',
+                    luckyNumber: 5
+                }
+            ],
+            study: [
+                {
+                    title: '學業籤 - 金榜題名',
+                    content: '學業運勢佳，考試順利。專心學習，理解吸收，將獲得優異成績。',
+                    luckyColor: '藍色',
+                    luckyNumber: 9
+                },
+                {
+                    title: '考試籤 - 準備充分',
+                    content: '考試需充分準備，複習重點。保持冷靜，發揮正常水平即可。',
+                    luckyColor: '紫色',
+                    luckyNumber: 2
+                }
+            ],
+            family: [
+                {
+                    title: '家庭籤 - 和樂融融',
+                    content: '家庭關係和諧，親情溫暖。多與家人溝通，共享天倫之樂。',
+                    luckyColor: '橙色',
+                    luckyNumber: 7
+                },
+                {
+                    title: '親情籤 - 理解包容',
+                    content: '家庭需要更多理解與包容。換位思考，體諒家人，關係將更加融洽。',
+                    luckyColor: '黃色',
+                    luckyNumber: 4
+                }
+            ],
+            travel: [
+                {
+                    title: '旅行籤 - 平安順利',
+                    content: '外出旅行平安順利，旅途愉快。注意安全，享受旅程美好時光。',
+                    luckyColor: '天藍色',
+                    luckyNumber: 6
+                },
+                {
+                    title: '外出籤 - 謹慎為宜',
+                    content: '外出需注意安全，提前規劃。避免匆忙，做好準備，旅程將更順利。',
+                    luckyColor: '棕色',
+                    luckyNumber: 3
+                }
+            ],
+            decision: [
+                {
+                    title: '決策籤 - 明智選擇',
+                    content: '重要決策需謹慎思考。收集資訊，分析利弊，做出明智選擇。',
+                    luckyColor: '深藍色',
+                    luckyNumber: 8
+                }
+            ],
+            opportunity: [
+                {
+                    title: '機會籤 - 把握良機',
+                    content: '機會來臨，需積極把握。展現能力，勇敢嘗試，將獲得成功。',
+                    luckyColor: '金色',
+                    luckyNumber: 9
+                }
+            ],
+            relationship: [
+                {
+                    title: '人際籤 - 廣結善緣',
+                    content: '人際關係良好，貴人相助。多與人交流，建立良好關係網絡。',
+                    luckyColor: '粉色',
+                    luckyNumber: 5
+                }
+            ],
+            creativity: [
+                {
+                    title: '創意籤 - 靈感湧現',
+                    content: '創意靈感豐富，適合創作。發揮想像力，將有出色作品產生。',
+                    luckyColor: '彩虹色',
+                    luckyNumber: 7
+                }
+            ]
+        };
+        
+        // 擴充的運勢資料庫
+        const expandedFortunes = {
+            general: {
+                title: '綜合運勢',
+                content: '今日整體運勢平穩，適合規劃未來。事業上有新機會出現，感情方面需多溝通。財運方面建議保守投資，健康狀況良好。',
+                luckyColor: '紅色',
+                luckyNumber: 7
+            },
+            career: {
+                title: '事業工作運勢',
+                content: '工作上可能會有新的挑戰出現，這是展現能力的機會。與同事合作順暢，上司對你的表現有所期待。適合學習新技能提升競爭力。',
+                luckyColor: '藍色',
+                luckyNumber: 3
+            },
+            love: {
+                title: '感情婚姻運勢',
+                content: '單身者可能有新的邂逅機會，多參加社交活動。有伴侶者需要多溝通，避免誤會產生。感情需要用心經營與維護。',
+                luckyColor: '粉色',
+                luckyNumber: 9
+            },
+            wealth: {
+                title: '財運投資運勢',
+                content: '財運平穩，不宜進行大額投資。可以考慮小額理財或儲蓄計劃。注意開支控制，避免衝動消費。',
+                luckyColor: '金色',
+                luckyNumber: 5
+            },
+            health: {
+                title: '健康狀況運勢',
+                content: '健康狀況良好，但需注意休息與飲食均衡。適當運動有助於維持體能。注意壓力管理，避免過度勞累。',
+                luckyColor: '綠色',
+                luckyNumber: 2
+            },
+            study: {
+                title: '學業考試運勢',
+                content: '學習狀態良好，專注力提升。考試運勢佳，複習效率高。適合學習新知識，拓展視野。',
+                luckyColor: '藍色',
+                luckyNumber: 8
+            },
+            family: {
+                title: '家庭關係運勢',
+                content: '家庭氣氛和諧，親情溫暖。與家人溝通順暢，互相理解支持。適合家庭聚會，增進感情。',
+                luckyColor: '橙色',
+                luckyNumber: 4
+            },
+            travel: {
+                title: '旅行外出運勢',
+                content: '外出運勢平順，旅途愉快。注意行程規劃，確保安全。適合短途旅行，放鬆心情。',
+                luckyColor: '天藍色',
+                luckyNumber: 6
+            },
+            decision: {
+                title: '重要決策運勢',
+                content: '決策運勢清晰，思路明確。適合做出重要決定，但需謹慎評估。聽取多方意見，做出最佳選擇。',
+                luckyColor: '深藍色',
+                luckyNumber: 7
+            },
+            opportunity: {
+                title: '機會運勢',
+                content: '機會運勢旺盛，有新的發展機會。需積極把握，展現能力。適合嘗試新事物，拓展領域。',
+                luckyColor: '金色',
+                luckyNumber: 9
+            },
+            relationship: {
+                title: '人際關係運勢',
+                content: '人際關係順暢，貴人相助。與朋友同事相處融洽，合作順利。適合社交活動，拓展人脈。',
+                luckyColor: '粉色',
+                luckyNumber: 5
+            },
+            creativity: {
+                title: '創意靈感運勢',
+                content: '創意靈感豐富，想像力活躍。適合藝術創作、寫作或設計工作。發揮創意，將有出色表現。',
+                luckyColor: '彩虹色',
+                luckyNumber: 3
+            }
+        };
+        
+        // 運勢查詢功能 - 在結果中間插入廣告
+        function getFortune() {
+            const birthDate = document.getElementById('birth-date').value;
+            const questionType = document.getElementById('question-type').value;
+            
+            if (!birthDate) {
+                alert('請輸入出生年月日');
+                return;
+            }
+            
+            const fortune = expandedFortunes[questionType] || expandedFortunes.general;
+            
+            // 隨機選擇一個結果中間廣告
+            const resultAd = resultAds[Math.floor(Math.random() * resultAds.length)];
+            
+            // 建立運勢結果HTML，在中間插入廣告
+            const fortuneHTML = `
+                <p><strong>${fortune.title}</strong></p>
+                <p>${fortune.content}</p>
+                
+                <!-- 結果中間廣告 -->
+                <div class="result-ad">
+                    <img src="${resultAd.image}" alt="${resultAd.title}" class="result-ad-image">
+                    <h4>${resultAd.title}</h4>
+                    <p>${resultAd.description}</p>
+                    <a href="#" class="result-ad-button" onclick="trackAd('${resultAd.id}')">${resultAd.buttonText}</a>
+                </div>
+                
+                <div style="margin-top: 15px;">
+                    <span style="color: #ffd166;">幸運色：${fortune.luckyColor}</span> | 
+                    <span style="color: #ffd166;">幸運數字：${fortune.luckyNumber}</span>
+                </div>
+                <p style="margin-top: 15px; font-style: italic; color: #aaa;">
+                    以上分析僅供參考，實際運勢取決於個人努力與選擇。
+                </p>
+            `;
+            
+            document.getElementById('fortune-content').innerHTML = fortuneHTML;
+            document.getElementById('fortune-result').style.display = 'block';
+            
+            // 顯示小方塊廣告（運算完成後）
+            setTimeout(() => {
+                showMiniAd();
+            }, 1000);
+            
+            // 滾動到結果
+            document.getElementById('fortune-result').scrollIntoView({ behavior: 'smooth' });
+        }
+        
+        // 靈籤堂功能
+        function showFortuneStick() {
+            document.getElementById('overlay').classList.add('active');
+            document.getElementById('fortuneStickPopup').classList.add('active');
+            document.getElementById('fortuneStickResult').style.display = 'none';
+        }
+        
+        function closeFortuneStick() {
+            document.getElementById('overlay').classList.remove('active');
+            document.getElementById('fortuneStickPopup').classList.remove('active');
+        }
+        
+        function drawFortuneStick(category) {
+            const sticks = fortuneSticks[category] || fortuneSticks.general;
+            const stick = sticks[Math.floor(Math.random() * sticks.length)];
+            
+            document.getElementById('stickTitle').textContent = stick.title;
+            document.getElementById('stickContent').innerHTML = `
+                <p>${stick.content}</p>
+                <div style="margin-top: 15px;">
+                    <span style="color: #9d4edd;">幸運色：${stick.luckyColor}</span> | 
+                    <span style="color: #9d4edd;">幸運數字：${stick.luckyNumber}</span>
+                </div>
+                <p style="margin-top: 15px; font-style: italic; color: #aaa;">
+                    籤詩僅供參考，實際運勢取決於個人努力與選擇。
+                </p>
+            `;
+            
+            document.getElementById('fortuneStickResult').style.display = 'block';
+            
+            // 顯示廣告
+            setTimeout(() => {
+                showServiceAd('靈籤堂', '抽籤相關商品推薦');
+            }, 1500);
+        }
+        
+        function drawFortuneStickAgain() {
+            const buttons = document.querySelectorAll('.fortune-stick-btn');
+            const activeButton = Array.from(buttons).find(btn => 
+                btn.textContent.includes(document.getElementById('stickTitle').textContent.split(' - ')[1] || '')
+            );
+            
+            if (activeButton) {
+                const category = activeButton.getAttribute('onclick').match(/drawFortuneStick\('(.+?)'\)/)[1];
+                drawFortuneStick(category);
+            } else {
+                drawFortuneStick('general');
+            }
+        }
+        
+        // 顯示服務相關跳出廣告
+        function showServiceAd(serviceName, adDescription) {
+            const relatedAds = ads.filter(ad => 
+                ad.service.includes(serviceName) || 
+                serviceName.includes(ad.service)
+            );
+            
+            const ad = relatedAds.length > 0 ? relatedAds[0] : ads[0];
+            
+            document.getElementById('popupAdTitle').textContent = ad.title;
+            document.getElementById('popupAdDesc').textContent = ad.description;
+            document.getElementById('popupAdCategory').textContent = ad.category;
+            document.getElementById('popupAdPrice').textContent = ad.price;
+            
+            // 更新跳出廣告圖片
+            const popupImage = document.querySelector('.popup-image');
+            if (popupImage) {
+                popupImage.src = ad.image;
+                popupImage.alt = ad.title;
+            }
+            
+            // 儲存當前廣告ID
+            window.currentAdId = ad.id;
+            
+            // 顯示跳出廣告
+            document.getElementById('overlay').classList.add('active');
+            document.getElementById('popupAd').classList.add('active');
+        }
+        
+        // 關閉跳出廣告
+        function closePopupAd() {
+            document.getElementById('overlay').classList.remove('active');
+            document.getElementById('popupAd').classList.remove('active');
+        }
+        
+        // 訪問廣告
+        function visitAd() {
+            if (window.currentAdId) {
+                trackAd(window.currentAdId);
+            }
+            closePopupAd();
+        }
+        
+        // 顯示小方塊廣告
+        function showMiniAd() {
+            const miniAd = document.getElementById('miniAd');
+            
+            // 隨機選擇一個廣告
+            const randomAd = ads[Math.floor(Math.random() * ads.length)];
+            
+            // 更新小方塊廣告內容
+            const miniImage = miniAd.querySelector('.mini-image');
+            if (miniImage) {
+                miniImage.src = randomAd.image;
+                miniImage.alt = randomAd.title;
+            }
+            
+            const miniTitle = miniAd.querySelector('h4');
+            if (miniTitle) {
+                miniTitle.textContent = randomAd.title;
+            }
+            
+            const miniDesc = miniAd.querySelector('p');
+            if (miniDesc) {
+                miniDesc.textContent = randomAd.description;
+            }
+            
+            // 儲存當前廣告ID
+            window.currentMiniAdId = randomAd.id;
+            
+            // 顯示小方塊廣告
+            miniAd.classList.add('show');
+            
+            // 10秒後自動隱藏
+            setTimeout(() => {
+                miniAd.classList.remove('show');
+            }, 10000);
+        }
+        
+        // 關閉小方塊廣告
+        function closeMiniAd() {
+            document.getElementById('miniAd').classList.remove('show');
+        }
+        
+        // 追蹤小方塊廣告點擊
+        function trackMiniAd() {
+            if (window.currentMiniAdId) {
+                trackAd(window.currentMiniAdId);
+            }
+            closeMiniAd();
+        }
+        
+        // 廣告點擊追蹤（後台記錄，不顯示給用戶）
+        function trackAd(adId) {
+            // 後台追蹤記錄
+            const trackData = {
+                adId: adId,
+                memberId: '3QWtn', // 後台使用，不顯示
+                timestamp: new Date().toISOString(),
+                pageUrl: window.location.href,
+                userAgent: navigator.userAgent
+            };
+            
+            console.log('廣告追蹤（後台）:', trackData);
+            
+            // 模擬跳轉
+            alert('即將導向商品頁面...');
+            
+            // 實際會發送到iChannels追蹤系統
+            // fetch('/api/track-ad', { method: 'POST', body: JSON.stringify(trackData) });
+            
+            return true;
+        }
+        
+        // 頁面載入完成
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('天機閣網站載入完成 - 靈籤堂與擴充運勢版');
+            
+            // 設定今天為預設日期
+            const today = new Date().toISOString().split('T')[0];
+            document.getElementById('birth-date').value = today;
+            
+            // 點擊遮罩層關閉廣告
+            document.getElementById('overlay').addEventListener('click', function() {
+                closePopupAd();
+                closeFortuneStick();
+            });
+            
+            // 5秒後顯示小方塊廣告（首次進入）
+            setTimeout(() => {
+                showMiniAd();
+            }, 5000);
+            
+            // 修復廣告pop up問題
+            if (typeof showServiceAd === 'undefined') {
+                console.error('showServiceAd函數未定義！');
+                // 重新定義函數
+                window.showServiceAd = function(serviceName, adDescription) {
+                    console.log('showServiceAd被呼叫:', serviceName);
+                    alert('服務廣告: ' + serviceName + '\n' + adDescription);
+                };
+            }
+            
+            // 添加測試按鈕
+            const servicesSection = document.querySelector('.services');
+            if (servicesSection) {
+                const testButton = document.createElement('button');
+                testButton.textContent = '🔧 測試所有功能';
+                testButton.style.cssText = `
+                    display: block;
+                    margin: 20px auto;
+                    padding: 10px 20px;
+                    background: #ff6b6b;
+                    color: white;
+                    border: none;
+                    border-radius: 5px;
+                    cursor: pointer;
+                    font-size: 14px;
+                `;
+                testButton.onclick = function() {
+                    // 測試運勢查詢
+                    getFortune();
+                    // 測試靈籤堂
+                    setTimeout(() => {
+                        showFortuneStick();
+                    }, 2000);
+                    // 測試跳出廣告
+                    setTimeout(() => {
+                        showServiceAd('測試服務', '測試廣告描述');
+                    }, 4000);
+                };
+                servicesSection.appendChild(testButton);
+            }
+        });
+    </script>
+    <!-- 廣告系統（獨立載入，不影響主系統） -->
+    <script src="../ads/ads.js"></script>
+</body>
+</html>
+
+<script>
+// 動態載入廣告標題和描述
+document.addEventListener('DOMContentLoaded', function() {
+    // 載入 ads.js
+    const script = document.createElement('script');
+    script.src = '../ads/ads.js';
+    script.onload = function() {
+        // 更新天機閣廣告
+        updateDestinyAds();
+    };
+    document.head.appendChild(script);
+});
+
+function updateDestinyAds() {
+    if (!window.destinyAds) return;
+    
+    // 更新廣告區塊標題
+    const titleEl = document.getElementById('destiny-ad-section-title');
+    const descEl = document.getElementById('destiny-ad-section-desc');
+    
+    if (titleEl) titleEl.textContent = '精選推薦商品';
+    if (descEl) descEl.textContent = '以下為精選商品，點擊圖片了解更多：';
+    
+    // 更新各個廣告卡片
+    const adTitles = document.querySelectorAll('.ad-title');
+    const adDescs = document.querySelectorAll('.ad-description');
+    
+    // 使用 destinyAds 中的資料
+    for (let i = 0; i < Math.min(adTitles.length, destinyAds.length); i++) {
+        adTitles[i].textContent = destinyAds[i].title;
+        adDescs[i].textContent = destinyAds[i].description;
+    }
+}
+</script>

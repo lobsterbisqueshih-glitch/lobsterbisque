@@ -645,8 +645,8 @@
         <h3>推薦商品</h3>
         <div class="ad-content">
             <img src="https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=400&h=200&fit=crop" alt="推薦商品" class="popup-image">
-            <h4 id="popupAdTitle">命理開運商品</h4>
-            <p id="popupAdDesc">精選命理相關商品，為您帶來好運氣</p>
+            <h4 id="popupAdTitle">精選生活用品</h4>
+            <p id="popupAdDesc">精選生活用品，提升生活品質</p>
             <div style="margin-top: 15px; font-size: 14px; color: #ffd166;">
                 <span id="popupAdCategory">書籍雜誌</span> • 
                 
@@ -716,7 +716,7 @@
     <div class="mini-ad" id="miniAd">
         <button class="close-mini" onclick="closeMiniAd()">×</button>
         <img src="https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?w=200&h=100&fit=crop" alt="開運商品" class="mini-image">
-        <h4>運算完成推薦</h4>
+        <h4>今日精選推薦</h4>
         <p>根據您的運勢結果，為您推薦相關商品</p>
         <a href="https://www.ichannels.com.tw/product/example?member=3QWtn<a href="#" class="mini-button" onclick="trackMiniAd()">立即查看</a>track=mini-ad" class="mini-button" onclick="trackMiniAd(); return false;">立即查看</a>
     </div>
@@ -770,7 +770,7 @@
         
         <!-- 服務項目 -->
         <section class="services">
-            <div class="service-card" onclick="showServiceAd('紫微斗數命盤', '紫微斗數相關商品推薦')">
+            <div class="service-card" onclick="showServiceAd('紫微斗數命盤', '舒適內衣推薦')">
                 <div class="service-icon">♈️</div>
                 <h3>紫微斗數命盤</h3>
                 <p>專業紫微斗數排盤，分析命盤格局、大運流年，深入解讀人生軌跡與發展方向。</p>
@@ -783,7 +783,7 @@
                 <button class="service-button">預約諮詢</button>
             </div>
             
-            <div class="service-card" onclick="showServiceAd('八字命理分析', '八字命理相關商品推薦')">
+            <div class="service-card" onclick="showServiceAd('八字命理分析', '優質內衣推薦')">
                 <div class="service-icon">🔢</div>
                 <h3>八字命理分析</h3>
                 <p>八字四柱排盤，分析五行生剋、十神格局，預測流年運勢與人生發展趨勢。</p>
@@ -796,7 +796,7 @@
                 <button class="service-button">預約諮詢</button>
             </div>
             
-            <div class="service-card" onclick="showServiceAd('姓名學分析', '姓名學相關商品推薦')">
+            <div class="service-card" onclick="showServiceAd('姓名學分析', '精選內衣推薦')">
                 <div class="service-icon">✍️</div>
                 <h3>姓名學分析</h3>
                 <p>姓名筆劃分析，結合八字五行，為您提供改名建議與命名服務，改善運勢。</p>
@@ -809,7 +809,7 @@
                 <button class="service-button">預約諮詢</button>
             </div>
             
-            <div class="service-card" onclick="showServiceAd('手相面相解讀', '手相面相相關商品推薦')">
+            <div class="service-card" onclick="showServiceAd('手相面相解讀', '限時優惠推薦')">
                 <div class="service-icon">🖐️</div>
                 <h3>手相面相解讀</h3>
                 <p>透過手相紋路與面相特徵分析性格特質、事業發展、感情婚姻與健康狀況。</p>
@@ -839,8 +839,8 @@
         
         <!-- 廣告區域 - 所有廣告都有圖案 -->
         <section class="ad-section">
-            <h2>命理開運推薦</h2>
-            <p>以下為命理相關推薦商品，點擊圖片了解更多：</p>
+            <h2>生活用品推薦</h2>
+            <p>以下為精選生活用品，點擊圖片了解更多：</p>
             
             <div class="ad-grid">
                 <div class="ad-card">
@@ -855,8 +855,8 @@
                 </div>
                 
                 <div class="ad-card">
-                    <img src="https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?w=400&h=250&fit=crop" alt="開運水晶" class="ad-image">
-                    <h4>天然開運水晶手鍊</h4>
+                    <img src="https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?w=400&h=250&fit=crop" alt="舒適內衣" class="ad-image">
+                    <h4>舒適透氣內衣</h4>
                     <p>精選天然水晶，提升正能量與好運氣</p>
                     <div class="ad-meta">
                         <span class="ad-category">其他類別</span>
@@ -913,7 +913,7 @@ const resultAds = [
     {
         id: 'result-ad-1',
         title: '根據您的運勢推薦',
-        description: '開運水晶手鍊，提升今日好運氣',
+        description: '舒適內衣手鍊，提升今日好運氣',
         image: 'https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?w=400&h=200&fit=crop',
         buttonText: '立即查看',
         link: 'https://shoppingfun.co/3QW_R'
@@ -1056,7 +1056,7 @@ function getFortune() {
             {
                 id: 'result-ad-1',
                 title: '根據您的運勢推薦',
-                description: '開運水晶手鍊，提升今日好運氣',
+                description: '舒適內衣手鍊，提升今日好運氣',
                 image: 'https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?w=400&h=200&fit=crop',
                 buttonText: '立即查看'
             },

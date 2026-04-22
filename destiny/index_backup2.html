@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>天機閣 - 專業命理服務</title>
-    <meta name="description" content="專業命理服務：今日運勢查詢、紫微斗數、八字命理、姓名學分析、靈籤堂抽籤。">
+    <meta name="description" content="專業命理服務：今日運勢查詢、紫微斗數、八字命理、姓名學分析。">
     <style>
         :root {
             --primary: #2d1b3d;
@@ -270,24 +270,6 @@
             background: #ff8e53;
             transform: translateY(-3px);
             box-shadow: 0 10px 20px rgba(255,107,107,0.3);
-        }
-        
-        /* 靈籤堂按鈕樣式 */
-        .fortune-stick-btn {
-            background: rgba(157, 78, 221, 0.1);
-            border: 1px solid rgba(157, 78, 221, 0.3);
-            border-radius: 8px;
-            padding: 15px;
-            color: white;
-            cursor: pointer;
-            transition: all 0.3s;
-            text-align: center;
-        }
-        
-        .fortune-stick-btn:hover {
-            background: rgba(157, 78, 221, 0.2);
-            transform: translateY(-2px);
-            border-color: #9d4edd;
         }
         
         /* 廣告區域 - 所有廣告都有圖案 */
@@ -628,11 +610,6 @@
             .result-ad-image {
                 height: 100px;
             }
-            
-            .fortune-stick-btn {
-                padding: 12px;
-                font-size: 14px;
-            }
         }
     </style>
 </head>
@@ -655,63 +632,6 @@
         <button class="popup-button" onclick="visitAd()">查看詳情</button>
     </div>
     
-    <!-- 靈籤堂彈出視窗 -->
-    <div class="popup-ad" id="fortuneStickPopup" style="max-width: 500px; border-color: #9d4edd;">
-        <button class="close-btn" onclick="closeFortuneStick()">×</button>
-        <h3>🎋 靈籤堂 - 線上抽籤</h3>
-        <div class="ad-content">
-            <div style="text-align: center; margin-bottom: 20px;">
-                <div style="font-size: 48px; margin-bottom: 15px;">🎋</div>
-                <h4>選擇您想詢問的主題</h4>
-            </div>
-            
-            <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin-bottom: 20px;">
-                <button class="fortune-stick-btn" onclick="drawFortuneStick('general')">
-                    <div style="font-size: 24px;">🔮</div>
-                    <div>綜合運勢</div>
-                </button>
-                <button class="fortune-stick-btn" onclick="drawFortuneStick('love')">
-                    <div style="font-size: 24px;">❤️</div>
-                    <div>感情婚姻</div>
-                </button>
-                <button class="fortune-stick-btn" onclick="drawFortuneStick('career')">
-                    <div style="font-size: 24px;">💼</div>
-                    <div>事業工作</div>
-                </button>
-                <button class="fortune-stick-btn" onclick="drawFortuneStick('wealth')">
-                    <div style="font-size: 24px;">💰</div>
-                    <div>財運投資</div>
-                </button>
-                <button class="fortune-stick-btn" onclick="drawFortuneStick('health')">
-                    <div style="font-size: 24px;">🏥</div>
-                    <div>健康狀況</div>
-                </button>
-                <button class="fortune-stick-btn" onclick="drawFortuneStick('study')">
-                    <div style="font-size: 24px;">📚</div>
-                    <div>學業考試</div>
-                </button>
-                <button class="fortune-stick-btn" onclick="drawFortuneStick('family')">
-                    <div style="font-size: 24px;">👨‍👩‍👧‍👦</div>
-                    <div>家庭關係</div>
-                </button>
-                <button class="fortune-stick-btn" onclick="drawFortuneStick('travel')">
-                    <div style="font-size: 24px;">✈️</div>
-                    <div>旅行外出</div>
-                </button>
-            </div>
-            
-            <div id="fortuneStickResult" style="display: none;">
-                <div style="background: rgba(157, 78, 221, 0.1); padding: 20px; border-radius: 10px; border: 1px solid rgba(157, 78, 221, 0.3);">
-                    <h4 id="stickTitle" style="color: #9d4edd; text-align: center; margin-bottom: 15px;"></h4>
-                    <div id="stickContent" style="color: #aaa; line-height: 1.6;"></div>
-                    <div style="margin-top: 20px; text-align: center;">
-                        <button class="popup-button" onclick="drawFortuneStickAgain()" style="background: linear-gradient(90deg, #9d4edd, #6a0dad);">再抽一次</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    
     <!-- 小方塊廣告 -->
     <div class="mini-ad" id="miniAd">
         <button class="close-mini" onclick="closeMiniAd()">×</button>
@@ -724,7 +644,7 @@
     <div class="container">
         <header>
             <h1>🔮 天機閣 - 專業命理服務</h1>
-            <p class="subtitle">已上線服務：今日運勢查詢、紫微斗數、八字命理、姓名學分析、手相面相解讀、靈籤堂抽籤</p>
+            <p class="subtitle">已上線服務：今日運勢查詢、紫微斗數、八字命理、姓名學分析、手相面相解讀</p>
             <a href="../" class="back-link">← 返回入口網站</a>
         </header>
         
@@ -745,13 +665,6 @@
                         <option value="love">感情婚姻</option>
                         <option value="wealth">財運投資</option>
                         <option value="health">健康狀況</option>
-                        <option value="study">學業考試</option>
-                        <option value="family">家庭關係</option>
-                        <option value="travel">旅行外出</option>
-                        <option value="decision">重要決策</option>
-                        <option value="opportunity">機會運勢</option>
-                        <option value="relationship">人際關係</option>
-                        <option value="creativity">創意靈感</option>
                     </select>
                 </div>
                 
@@ -820,20 +733,6 @@
                     <li>健康狀況評估</li>
                 </ul>
                 <button class="service-button">預約諮詢</button>
-            </div>
-            
-            <!-- 靈籤堂 - 新增 -->
-            <div class="service-card" onclick="showFortuneStick()">
-                <div class="service-icon">🎋</div>
-                <h3 style="color: #9d4edd;">靈籤堂</h3>
-                <p>線上抽籤服務，提供各種籤詩解讀，包括感情、事業、健康等主題籤詩。</p>
-                <ul class="service-features">
-                    <li>線上抽籤系統</li>
-                    <li>各類主題籤詩</li>
-                    <li>專業籤詩解讀</li>
-                    <li>每日運勢籤</li>
-                </ul>
-                <button class="service-button" onclick="showFortuneStick()">立即抽籤</button>
             </div>
         </section>
         
@@ -969,236 +868,6 @@
             }
         ];
         
-        // 靈籤堂籤詩資料庫
-        const fortuneSticks = {
-            general: [
-                {
-                    title: '上上籤 - 大吉大利',
-                    content: '今日運勢極佳，諸事順利。事業上有貴人相助，感情方面甜蜜美滿，財運亨通，健康狀況良好。把握機會，積極行動。',
-                    luckyColor: '金色',
-                    luckyNumber: 8
-                },
-                {
-                    title: '中上籤 - 平穩順利',
-                    content: '運勢平穩，各方面進展順利。工作上按部就班即可，感情需要多溝通，財運穩定，健康無大礙。保持耐心，穩步前進。',
-                    luckyColor: '藍色',
-                    luckyNumber: 3
-                },
-                {
-                    title: '中平籤 - 中庸之道',
-                    content: '運勢中庸，需謹慎行事。工作上可能遇到小挑戰，感情需要用心經營，財運平平，注意健康保養。保持平衡，避免衝動。',
-                    luckyColor: '綠色',
-                    luckyNumber: 5
-                }
-            ],
-            love: [
-                {
-                    title: '姻緣籤 - 良緣將至',
-                    content: '感情運勢佳，單身者可能遇到合適對象，有伴侶者感情更加甜蜜。多參加社交活動，展現真實自我。',
-                    luckyColor: '粉色',
-                    luckyNumber: 9
-                },
-                {
-                    title: '和合籤 - 溝通為重',
-                    content: '感情需要更多溝通與理解。避免誤會產生，多表達關心與愛意，關係將更加穩固。',
-                    luckyColor: '紅色',
-                    luckyNumber: 2
-                }
-            ],
-            career: [
-                {
-                    title: '事業籤 - 步步高升',
-                    content: '事業運勢強勁，有晉升機會。展現專業能力，積極爭取表現，將獲得上司賞識。',
-                    luckyColor: '黑色',
-                    luckyNumber: 7
-                },
-                {
-                    title: '工作籤 - 穩健發展',
-                    content: '工作平穩，適合學習新技能。與同事合作順暢，專注本職工作，未來發展可期。',
-                    luckyColor: '灰色',
-                    luckyNumber: 4
-                }
-            ],
-            wealth: [
-                {
-                    title: '財運籤 - 財源廣進',
-                    content: '財運亨通，有意外之財機會。但需謹慎投資，避免衝動消費，理財規劃為上。',
-                    luckyColor: '金色',
-                    luckyNumber: 6
-                },
-                {
-                    title: '投資籤 - 穩健為宜',
-                    content: '財運平穩，不宜進行高風險投資。建議儲蓄或小額理財，保守為上策。',
-                    luckyColor: '銀色',
-                    luckyNumber: 1
-                }
-            ],
-            health: [
-                {
-                    title: '健康籤 - 身心安康',
-                    content: '健康狀況良好，但需注意休息。適當運動，均衡飲食，保持良好生活習慣。',
-                    luckyColor: '綠色',
-                    luckyNumber: 3
-                },
-                {
-                    title: '養生籤 - 調養為重',
-                    content: '需注意身體調養，避免過度勞累。多休息，適當放鬆，關注身心健康。',
-                    luckyColor: '白色',
-                    luckyNumber: 5
-                }
-            ],
-            study: [
-                {
-                    title: '學業籤 - 金榜題名',
-                    content: '學業運勢佳，考試順利。專心學習，理解吸收，將獲得優異成績。',
-                    luckyColor: '藍色',
-                    luckyNumber: 9
-                },
-                {
-                    title: '考試籤 - 準備充分',
-                    content: '考試需充分準備，複習重點。保持冷靜，發揮正常水平即可。',
-                    luckyColor: '紫色',
-                    luckyNumber: 2
-                }
-            ],
-            family: [
-                {
-                    title: '家庭籤 - 和樂融融',
-                    content: '家庭關係和諧，親情溫暖。多與家人溝通，共享天倫之樂。',
-                    luckyColor: '橙色',
-                    luckyNumber: 7
-                },
-                {
-                    title: '親情籤 - 理解包容',
-                    content: '家庭需要更多理解與包容。換位思考，體諒家人，關係將更加融洽。',
-                    luckyColor: '黃色',
-                    luckyNumber: 4
-                }
-            ],
-            travel: [
-                {
-                    title: '旅行籤 - 平安順利',
-                    content: '外出旅行平安順利，旅途愉快。注意安全，享受旅程美好時光。',
-                    luckyColor: '天藍色',
-                    luckyNumber: 6
-                },
-                {
-                    title: '外出籤 - 謹慎為宜',
-                    content: '外出需注意安全，提前規劃。避免匆忙，做好準備，旅程將更順利。',
-                    luckyColor: '棕色',
-                    luckyNumber: 3
-                }
-            ],
-            decision: [
-                {
-                    title: '決策籤 - 明智選擇',
-                    content: '重要決策需謹慎思考。收集資訊，分析利弊，做出明智選擇。',
-                    luckyColor: '深藍色',
-                    luckyNumber: 8
-                }
-            ],
-            opportunity: [
-                {
-                    title: '機會籤 - 把握良機',
-                    content: '機會來臨，需積極把握。展現能力，勇敢嘗試，將獲得成功。',
-                    luckyColor: '金色',
-                    luckyNumber: 9
-                }
-            ],
-            relationship: [
-                {
-                    title: '人際籤 - 廣結善緣',
-                    content: '人際關係良好，貴人相助。多與人交流，建立良好關係網絡。',
-                    luckyColor: '粉色',
-                    luckyNumber: 5
-                }
-            ],
-            creativity: [
-                {
-                    title: '創意籤 - 靈感湧現',
-                    content: '創意靈感豐富，適合創作。發揮想像力，將有出色作品產生。',
-                    luckyColor: '彩虹色',
-                    luckyNumber: 7
-                }
-            ]
-        };
-        
-        // 擴充的運勢資料庫
-        const expandedFortunes = {
-            general: {
-                title: '綜合運勢',
-                content: '今日整體運勢平穩，適合規劃未來。事業上有新機會出現，感情方面需多溝通。財運方面建議保守投資，健康狀況良好。',
-                luckyColor: '紅色',
-                luckyNumber: 7
-            },
-            career: {
-                title: '事業工作運勢',
-                content: '工作上可能會有新的挑戰出現，這是展現能力的機會。與同事合作順暢，上司對你的表現有所期待。適合學習新技能提升競爭力。',
-                luckyColor: '藍色',
-                luckyNumber: 3
-            },
-            love: {
-                title: '感情婚姻運勢',
-                content: '單身者可能有新的邂逅機會，多參加社交活動。有伴侶者需要多溝通，避免誤會產生。感情需要用心經營與維護。',
-                luckyColor: '粉色',
-                luckyNumber: 9
-            },
-            wealth: {
-                title: '財運投資運勢',
-                content: '財運平穩，不宜進行大額投資。可以考慮小額理財或儲蓄計劃。注意開支控制，避免衝動消費。',
-                luckyColor: '金色',
-                luckyNumber: 5
-            },
-            health: {
-                title: '健康狀況運勢',
-                content: '健康狀況良好，但需注意休息與飲食均衡。適當運動有助於維持體能。注意壓力管理，避免過度勞累。',
-                luckyColor: '綠色',
-                luckyNumber: 2
-            },
-            study: {
-                title: '學業考試運勢',
-                content: '學習狀態良好，專注力提升。考試運勢佳，複習效率高。適合學習新知識，拓展視野。',
-                luckyColor: '藍色',
-                luckyNumber: 8
-            },
-            family: {
-                title: '家庭關係運勢',
-                content: '家庭氣氛和諧，親情溫暖。與家人溝通順暢，互相理解支持。適合家庭聚會，增進感情。',
-                luckyColor: '橙色',
-                luckyNumber: 4
-            },
-            travel: {
-                title: '旅行外出運勢',
-                content: '外出運勢平順，旅途愉快。注意行程規劃，確保安全。適合短途旅行，放鬆心情。',
-                luckyColor: '天藍色',
-                luckyNumber: 6
-            },
-            decision: {
-                title: '重要決策運勢',
-                content: '決策運勢清晰，思路明確。適合做出重要決定，但需謹慎評估。聽取多方意見，做出最佳選擇。',
-                luckyColor: '深藍色',
-                luckyNumber: 7
-            },
-            opportunity: {
-                title: '機會運勢',
-                content: '機會運勢旺盛，有新的發展機會。需積極把握，展現能力。適合嘗試新事物，拓展領域。',
-                luckyColor: '金色',
-                luckyNumber: 9
-            },
-            relationship: {
-                title: '人際關係運勢',
-                content: '人際關係順暢，貴人相助。與朋友同事相處融洽，合作順利。適合社交活動，拓展人脈。',
-                luckyColor: '粉色',
-                luckyNumber: 5
-            },
-            creativity: {
-                title: '創意靈感運勢',
-                content: '創意靈感豐富，想像力活躍。適合藝術創作、寫作或設計工作。發揮創意，將有出色表現。',
-                luckyColor: '彩虹色',
-                luckyNumber: 3
-            }
-        };
-        
         // 運勢查詢功能 - 在結果中間插入廣告
         function getFortune() {
             const birthDate = document.getElementById('birth-date').value;
@@ -1209,7 +878,41 @@
                 return;
             }
             
-            const fortune = expandedFortunes[questionType] || expandedFortunes.general;
+            // 模擬運勢結果
+            const fortunes = {
+                general: {
+                    title: '綜合運勢',
+                    content: '今日整體運勢平穩，適合規劃未來。事業上有新機會出現，感情方面需多溝通。財運方面建議保守投資，健康狀況良好。',
+                    luckyColor: '紅色',
+                    luckyNumber: 7
+                },
+                career: {
+                    title: '事業工作運勢',
+                    content: '工作上可能會有新的挑戰出現，這是展現能力的機會。與同事合作順暢，上司對你的表現有所期待。適合學習新技能提升競爭力。',
+                    luckyColor: '藍色',
+                    luckyNumber: 3
+                },
+                love: {
+                    title: '感情婚姻運勢',
+                    content: '單身者可能有新的邂逅機會，多參加社交活動。有伴侶者需要多溝通，避免誤會產生。感情需要用心經營與維護。',
+                    luckyColor: '粉色',
+                    luckyNumber: 9
+                },
+                wealth: {
+                    title: '財運投資運勢',
+                    content: '財運平穩，不宜進行大額投資。可以考慮小額理財或儲蓄計劃。注意開支控制，避免衝動消費。',
+                    luckyColor: '金色',
+                    luckyNumber: 5
+                },
+                health: {
+                    title: '健康狀況運勢',
+                    content: '健康狀況良好，但需注意休息與飲食均衡。適當運動有助於維持體能。注意壓力管理，避免過度勞累。',
+                    luckyColor: '綠色',
+                    luckyNumber: 2
+                }
+            };
+            
+            const fortune = fortunes[questionType] || fortunes.general;
             
             // 隨機選擇一個結果中間廣告
             const resultAd = resultAds[Math.floor(Math.random() * resultAds.length)];
@@ -1246,56 +949,6 @@
             
             // 滾動到結果
             document.getElementById('fortune-result').scrollIntoView({ behavior: 'smooth' });
-        }
-        
-        // 靈籤堂功能
-        function showFortuneStick() {
-            document.getElementById('overlay').classList.add('active');
-            document.getElementById('fortuneStickPopup').classList.add('active');
-            document.getElementById('fortuneStickResult').style.display = 'none';
-        }
-        
-        function closeFortuneStick() {
-            document.getElementById('overlay').classList.remove('active');
-            document.getElementById('fortuneStickPopup').classList.remove('active');
-        }
-        
-        function drawFortuneStick(category) {
-            const sticks = fortuneSticks[category] || fortuneSticks.general;
-            const stick = sticks[Math.floor(Math.random() * sticks.length)];
-            
-            document.getElementById('stickTitle').textContent = stick.title;
-            document.getElementById('stickContent').innerHTML = `
-                <p>${stick.content}</p>
-                <div style="margin-top: 15px;">
-                    <span style="color: #9d4edd;">幸運色：${stick.luckyColor}</span> | 
-                    <span style="color: #9d4edd;">幸運數字：${stick.luckyNumber}</span>
-                </div>
-                <p style="margin-top: 15px; font-style: italic; color: #aaa;">
-                    籤詩僅供參考，實際運勢取決於個人努力與選擇。
-                </p>
-            `;
-            
-            document.getElementById('fortuneStickResult').style.display = 'block';
-            
-            // 顯示廣告
-            setTimeout(() => {
-                showServiceAd('靈籤堂', '抽籤相關商品推薦');
-            }, 1500);
-        }
-        
-        function drawFortuneStickAgain() {
-            const buttons = document.querySelectorAll('.fortune-stick-btn');
-            const activeButton = Array.from(buttons).find(btn => 
-                btn.textContent.includes(document.getElementById('stickTitle').textContent.split(' - ')[1] || '')
-            );
-            
-            if (activeButton) {
-                const category = activeButton.getAttribute('onclick').match(/drawFortuneStick\('(.+?)'\)/)[1];
-                drawFortuneStick(category);
-            } else {
-                drawFortuneStick('general');
-            }
         }
         
         // 顯示服務相關跳出廣告
@@ -1414,17 +1067,14 @@
         
         // 頁面載入完成
         document.addEventListener('DOMContentLoaded', function() {
-            console.log('天機閣網站載入完成 - 靈籤堂與擴充運勢版');
+            console.log('天機閣網站載入完成 - 廣告系統優化版');
             
             // 設定今天為預設日期
             const today = new Date().toISOString().split('T')[0];
             document.getElementById('birth-date').value = today;
             
             // 點擊遮罩層關閉廣告
-            document.getElementById('overlay').addEventListener('click', function() {
-                closePopupAd();
-                closeFortuneStick();
-            });
+            document.getElementById('overlay').addEventListener('click', closePopupAd);
             
             // 5秒後顯示小方塊廣告（首次進入）
             setTimeout(() => {
@@ -1445,7 +1095,7 @@
             const servicesSection = document.querySelector('.services');
             if (servicesSection) {
                 const testButton = document.createElement('button');
-                testButton.textContent = '🔧 測試所有功能';
+                testButton.textContent = '🔧 測試廣告系統';
                 testButton.style.cssText = `
                     display: block;
                     margin: 20px auto;
@@ -1458,16 +1108,12 @@
                     font-size: 14px;
                 `;
                 testButton.onclick = function() {
-                    // 測試運勢查詢
+                    // 測試運勢結果中間廣告
                     getFortune();
-                    // 測試靈籤堂
-                    setTimeout(() => {
-                        showFortuneStick();
-                    }, 2000);
                     // 測試跳出廣告
                     setTimeout(() => {
                         showServiceAd('測試服務', '測試廣告描述');
-                    }, 4000);
+                    }, 2000);
                 };
                 servicesSection.appendChild(testButton);
             }
